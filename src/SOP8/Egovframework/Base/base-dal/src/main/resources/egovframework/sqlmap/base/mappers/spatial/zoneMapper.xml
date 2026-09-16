@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="zoneMapper">
+
+	<select id="selectZones" parameterType="map" resultType="egovframework.base.model.spatial.Zone">
+		Select * from sp_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertZone" parameterType="egovframework.base.model.spatial.Zone">
+		INSERT INTO sp_zone (zone_sn, name, buld_sn, floor_indx, adit_floor, text_center_crdnt_x, text_center_crdnt_y, text_center_crdnt_z, brdcst_text, disp_text, site_sn)
+		VALUES (#{zone_sn}, #{name}, #{buld_sn}, #{floor_indx}, #{adit_floor}, #{text_center_crdnt_x}, #{text_center_crdnt_y}, #{text_center_crdnt_z}, #{brdcst_text}, #{disp_text}, #{site_sn})
+	</insert>
+
+	<insert id="insertZones" parameterType="java.util.List">
+		INSERT INTO sp_zone (zone_sn, name, buld_sn, floor_indx, adit_floor, text_center_crdnt_x, text_center_crdnt_y, text_center_crdnt_z, brdcst_text, disp_text, site_sn)
+		VALUES
+		<foreach collection="list" item="zone" separator=",">
+			(
+				(#{zone.zone_sn}, #{zone.name}, #{zone.buld_sn}, #{zone.floor_indx}, #{zone.adit_floor}, #{zone.text_center_crdnt_x}, #{zone.text_center_crdnt_y}, #{zone.text_center_crdnt_z}, #{zone.brdcst_text}, #{zone.disp_text}, #{zone.site_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateZone" parameterType="egovframework.base.model.spatial.Zone">
+		UPDATE sp_zone
+		SET name = #{name}, buld_sn = #{buld_sn}, floor_indx = #{floor_indx}, adit_floor = #{adit_floor}, text_center_crdnt_x = #{text_center_crdnt_x}, text_center_crdnt_y = #{text_center_crdnt_y}, text_center_crdnt_z = #{text_center_crdnt_z}, brdcst_text = #{brdcst_text}, disp_text = #{disp_text}, site_sn = #{site_sn}
+		<where>
+			zone_sn = #{zone_sn}
+		</where>
+	</update>
+
+	<update id="updateZoneByCondition" parameterType="map">
+		UPDATE sp_zone
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteZone" parameterType="egovframework.base.model.spatial.Zone">
+		DELETE FROM sp_zone
+		<where>
+			zone_sn = #{zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteZoneByCondition" parameterType="map">
+		DELETE FROM sp_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

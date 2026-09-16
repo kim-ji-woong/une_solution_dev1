@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rem xcopy /s /y $(ProjectDir)lib $(TargetDir)&#xD;&#xA;xcopy /s /y $(ProjectDir)lib $(TargetDir)" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\DCOP.Model\DCOP.Model.csproj" />
+    <ProjectReference Include="..\..\WebDCOP\DCOP.DAL\DCOP.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="codesMapper">
+
+	<select id="selectCodeses" parameterType="map" resultType="egovframework.base.model.common.Codes">
+		Select * from co_code
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertCodes" parameterType="egovframework.base.model.common.Codes">
+		INSERT INTO co_code (code, cl_code, code_name, ordr_no)
+		VALUES (#{code}, #{cl_code}, #{code_name}, #{ordr_no})
+	</insert>
+
+	<insert id="insertCodeses" parameterType="java.util.List">
+		INSERT INTO co_code (code, cl_code, code_name, ordr_no)
+		VALUES
+		<foreach collection="list" item="codes" separator=",">
+			(
+				(#{codes.code}, #{codes.cl_code}, #{codes.code_name}, #{codes.ordr_no})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateCodes" parameterType="egovframework.base.model.common.Codes">
+		UPDATE co_code
+		SET cl_code = #{cl_code}, code_name = #{code_name}, ordr_no = #{ordr_no}
+		<where>
+			code = #{code}
+		</where>
+	</update>
+
+	<update id="updateCodesByCondition" parameterType="map">
+		UPDATE co_code
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteCodes" parameterType="egovframework.base.model.common.Codes">
+		DELETE FROM co_code
+		<where>
+			code = #{code}
+		</where>
+	</delete>
+
+	<delete id="deleteCodesByCondition" parameterType="map">
+		DELETE FROM co_code
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

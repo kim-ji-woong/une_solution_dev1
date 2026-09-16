@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsTcpLib2\dnsTcpLib2\dnsTcpLib2.csproj" />
+    <ProjectReference Include="..\..\..\Base\AlarmService\Base.AlarmService.BLL\Base.AlarmService.BLL.csproj" />
+    <ProjectReference Include="..\..\..\Base\AlarmService\Base.AlarmService.IBLL\Base.AlarmService.IBLL.csproj" />
+    <ProjectReference Include="..\..\..\Base\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Response">
+      <HintPath>..\..\..\Utility\Response\bin\Debug\netstandard2.1\Response.dll</HintPath>
+    </Reference>
+    <Reference Include="S1.Frameworks">
+      <HintPath>..\..\..\..\..\binary\library\SVMS\S1.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="S1SVMSSDKv2">
+      <HintPath>..\..\..\..\..\binary\library\SVMS\S1SVMSSDKv2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commentMapper">
+
+	<select id="selectComments" parameterType="map" resultType="egovframework.base.model.sop.component.Comment">
+		Select * from so_compn_cm
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertComment" parameterType="egovframework.base.model.sop.component.Comment">
+		INSERT INTO so_compn_cm (compn_sn, contents)
+		VALUES (#{compn_sn}, #{contents})
+	</insert>
+
+	<insert id="insertComments" parameterType="java.util.List">
+		INSERT INTO so_compn_cm (compn_sn, contents)
+		VALUES
+		<foreach collection="list" item="comment" separator=",">
+			(
+				(#{comment.compn_sn}, #{comment.contents})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateComment" parameterType="egovframework.base.model.sop.component.Comment">
+		UPDATE so_compn_cm
+		SET contents = #{contents}
+		<where>
+			compn_sn = #{compn_sn}
+		</where>
+	</update>
+
+	<update id="updateCommentByCondition" parameterType="map">
+		UPDATE so_compn_cm
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteComment" parameterType="egovframework.base.model.sop.component.Comment">
+		DELETE FROM so_compn_cm
+		<where>
+			compn_sn = #{compn_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteCommentByCondition" parameterType="map">
+		DELETE FROM so_compn_cm
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

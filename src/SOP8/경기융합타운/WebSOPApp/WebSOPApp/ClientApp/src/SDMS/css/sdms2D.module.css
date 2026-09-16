@@ -1,0 +1,34 @@
+﻿
+.imgBox {
+    position: absolute;
+}
+
+.mainImage {
+    height: 85%;
+    /*max-width: 78%;*/
+    max-width: 100%;
+    object-fit: contain;
+    transform: translateZ(0);
+    margin: auto;
+    z-index: 1;
+    position: relative;
+    pointer-events: auto !important;
+}
+
+.poiImgs {
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    position: absolute;
+    pointer-events: auto !important;
+}
+
+.selectedPoiImgs {
+    width: 25px;
+    height: 25px;
+    border: #f3ee0c 1px solid;
+    z-index: 3;
+    position: absolute;
+    pointer-events: auto !important;
+}
+

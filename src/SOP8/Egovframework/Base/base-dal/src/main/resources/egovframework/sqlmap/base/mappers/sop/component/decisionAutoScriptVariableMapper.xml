@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="decisionAutoScriptVariableMapper">
+
+	<select id="selectDecisionAutoScriptVariables" parameterType="map" resultType="egovframework.base.model.sop.component.DecisionAutoScriptVariable">
+		Select * from so_compn_dcs_atmc_script_vriabl
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertDecisionAutoScriptVariable" parameterType="egovframework.base.model.sop.component.DecisionAutoScriptVariable">
+		INSERT INTO so_compn_dcs_atmc_script_vriabl (compn_sn, vriabl_name, dcs_vriabl_optn_code, dcs_vriabl_code)
+		VALUES (#{compn_sn}, #{vriabl_name}, #{dcs_vriabl_optn_code}, #{dcs_vriabl_code})
+	</insert>
+
+	<insert id="insertDecisionAutoScriptVariables" parameterType="java.util.List">
+		INSERT INTO so_compn_dcs_atmc_script_vriabl (compn_sn, vriabl_name, dcs_vriabl_optn_code, dcs_vriabl_code)
+		VALUES
+		<foreach collection="list" item="decisionAutoScriptVariable" separator=",">
+			(
+				(#{decisionAutoScriptVariable.compn_sn}, #{decisionAutoScriptVariable.vriabl_name}, #{decisionAutoScriptVariable.dcs_vriabl_optn_code}, #{decisionAutoScriptVariable.dcs_vriabl_code})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateDecisionAutoScriptVariable" parameterType="egovframework.base.model.sop.component.DecisionAutoScriptVariable">
+		UPDATE so_compn_dcs_atmc_script_vriabl
+		SET vriabl_name = #{vriabl_name}, dcs_vriabl_optn_code = #{dcs_vriabl_optn_code}, dcs_vriabl_code = #{dcs_vriabl_code}
+		<where>
+			compn_sn = #{compn_sn}
+		</where>
+	</update>
+
+	<update id="updateDecisionAutoScriptVariableByCondition" parameterType="map">
+		UPDATE so_compn_dcs_atmc_script_vriabl
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteDecisionAutoScriptVariable" parameterType="egovframework.base.model.sop.component.DecisionAutoScriptVariable">
+		DELETE FROM so_compn_dcs_atmc_script_vriabl
+		<where>
+			compn_sn = #{compn_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteDecisionAutoScriptVariableByCondition" parameterType="map">
+		DELETE FROM so_compn_dcs_atmc_script_vriabl
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

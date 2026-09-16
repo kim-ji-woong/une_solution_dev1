@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulbrainWebAPIServer", "SoulbrainWebAPIServer\SoulbrainWebAPIServer.csproj", "{D551FD5D-88CD-437D-B1A3-3F77A4084E93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DNS", "DNS", "{EE4D305F-5148-40BD-A960-491095F8002D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsDapperDBUtil", "..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj", "{0E5B7656-455D-4C1E-96F6-7739C99D950E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{8F3A415C-B804-466A-9A44-B23F1DF1233B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base.Model", "..\..\Base\Base.Model\Base.Model.csproj", "{EF77430E-933A-48B8-9666-82F872CA2F35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulbrain.Model", "..\Soulbrain.Model\Soulbrain.Model.csproj", "{22CA4FE7-BB5E-4C04-9CB3-82CFF4F708EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsDataSoulbrain", "..\dnsDataSoulbrain\dnsDataSoulbrain.csproj", "{459D0D46-3549-46A6-8CB8-319A3F9ED19A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D551FD5D-88CD-437D-B1A3-3F77A4084E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D551FD5D-88CD-437D-B1A3-3F77A4084E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D551FD5D-88CD-437D-B1A3-3F77A4084E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D551FD5D-88CD-437D-B1A3-3F77A4084E93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E5B7656-455D-4C1E-96F6-7739C99D950E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E5B7656-455D-4C1E-96F6-7739C99D950E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E5B7656-455D-4C1E-96F6-7739C99D950E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E5B7656-455D-4C1E-96F6-7739C99D950E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF77430E-933A-48B8-9666-82F872CA2F35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF77430E-933A-48B8-9666-82F872CA2F35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF77430E-933A-48B8-9666-82F872CA2F35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF77430E-933A-48B8-9666-82F872CA2F35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22CA4FE7-BB5E-4C04-9CB3-82CFF4F708EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22CA4FE7-BB5E-4C04-9CB3-82CFF4F708EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22CA4FE7-BB5E-4C04-9CB3-82CFF4F708EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22CA4FE7-BB5E-4C04-9CB3-82CFF4F708EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459D0D46-3549-46A6-8CB8-319A3F9ED19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459D0D46-3549-46A6-8CB8-319A3F9ED19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459D0D46-3549-46A6-8CB8-319A3F9ED19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459D0D46-3549-46A6-8CB8-319A3F9ED19A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E5B7656-455D-4C1E-96F6-7739C99D950E} = {EE4D305F-5148-40BD-A960-491095F8002D}
+		{EF77430E-933A-48B8-9666-82F872CA2F35} = {8F3A415C-B804-466A-9A44-B23F1DF1233B}
+		{22CA4FE7-BB5E-4C04-9CB3-82CFF4F708EA} = {8F3A415C-B804-466A-9A44-B23F1DF1233B}
+		{459D0D46-3549-46A6-8CB8-319A3F9ED19A} = {EE4D305F-5148-40BD-A960-491095F8002D}
+	EndGlobalSection
+EndGlobal

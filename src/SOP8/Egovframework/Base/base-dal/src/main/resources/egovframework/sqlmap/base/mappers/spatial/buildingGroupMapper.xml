@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buildingGroupMapper">
+
+	<select id="selectBuildingGroups" parameterType="map" resultType="egovframework.base.model.spatial.BuildingGroup">
+		Select * from sp_buld_group
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertBuildingGroup" parameterType="egovframework.base.model.spatial.BuildingGroup">
+		INSERT INTO sp_buld_group (buld_group_sn, name, text_center_crdnt_x, text_center_crdnt_y, text_center_crdnt_z, disp_text, site_sn)
+		VALUES (#{buld_group_sn}, #{name}, #{text_center_crdnt_x}, #{text_center_crdnt_y}, #{text_center_crdnt_z}, #{disp_text}, #{site_sn})
+	</insert>
+
+	<insert id="insertBuildingGroups" parameterType="java.util.List">
+		INSERT INTO sp_buld_group (buld_group_sn, name, text_center_crdnt_x, text_center_crdnt_y, text_center_crdnt_z, disp_text, site_sn)
+		VALUES
+		<foreach collection="list" item="buildingGroup" separator=",">
+			(
+				(#{buildingGroup.buld_group_sn}, #{buildingGroup.name}, #{buildingGroup.text_center_crdnt_x}, #{buildingGroup.text_center_crdnt_y}, #{buildingGroup.text_center_crdnt_z}, #{buildingGroup.disp_text}, #{buildingGroup.site_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateBuildingGroup" parameterType="egovframework.base.model.spatial.BuildingGroup">
+		UPDATE sp_buld_group
+		SET name = #{name}, text_center_crdnt_x = #{text_center_crdnt_x}, text_center_crdnt_y = #{text_center_crdnt_y}, text_center_crdnt_z = #{text_center_crdnt_z}, disp_text = #{disp_text}, site_sn = #{site_sn}
+		<where>
+			buld_group_sn = #{buld_group_sn}
+		</where>
+	</update>
+
+	<update id="updateBuildingGroupByCondition" parameterType="map">
+		UPDATE sp_buld_group
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteBuildingGroup" parameterType="egovframework.base.model.spatial.BuildingGroup">
+		DELETE FROM sp_buld_group
+		<where>
+			buld_group_sn = #{buld_group_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteBuildingGroupByCondition" parameterType="map">
+		DELETE FROM sp_buld_group
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

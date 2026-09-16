@@ -1,0 +1,66 @@
+.panelArea {
+    width: 100%;
+    height: 100vh; 
+    background: #f7f7f7; 
+    position: relative; 
+    overflow: hidden;
+    padding-bottom: 190px;
+}
+
+/*
+.sectionPanels {
+    width: 100%;
+    height: 100%;
+    display: flex;
+} */
+
+/*
+.chartArea {
+    width: 100%;
+	height:100%;
+    overflow: auto;
+} */
+
+/*******************************/
+/*******************************/
+
+
+#watermark {
+    color: #D0D0D0;
+    opacity: 0.5;
+    font-size: 90px;
+    /*    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);*/
+    -webkit-transform: rotate(-30deg);
+    position: absolute;
+    width: 50%;
+    height: 20%;
+    margin: 0;
+    z-index: 0;
+    left: 30%;
+    top: 40%;
+}
+
+
+#waterbtn {
+    width: 120px;
+    height: 40px;
+    padding: 8px 3px;
+    font-size : 18px;
+    font-weight: 700;
+    color:#c6c6c6;
+    border: 2px solid rgba(198,198,198,.5);
+    text-align:center;
+    border-radius: 20px;
+    cursor: pointer;
+    position:absolute;
+    top:30px;
+    right:40px;
+    z-index:1;
+}
+
+/*
+.chartArea .scrollbar { overflow-y: auto }
+.chartArea .scrollbar::-webkit-scrollbar { width: 4px; background: none }
+.chartArea .scrollbar::-webkit-scrollbar-thumb { background: #0095FF; opacity: .4 }
+.chartArea .scrollbar::-webkit-scrollbar-track { background: none } */

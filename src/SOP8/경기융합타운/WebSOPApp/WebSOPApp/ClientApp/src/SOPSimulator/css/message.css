@@ -1,0 +1,6 @@
+﻿
+.phoneNumInput{ display: flex; width: 100%; justify-content: center; margin-bottom: 4px; margin-left: 24px; }
+.phoneNumInput input[type=text]{ display: block; width: 243px; height: 24px; line-height: 24px; border: solid 1px #707070; border-radius: 3px; }
+.phoneNumInput input[type=text]::placeholder{ color: #BBBBBB; line-height: 24px; font-size: 10px; }
+.trashIcon{ display: inline-block; width: 24px; height: 24px; background: url('../../SOPSimulator/img/trashIcon.png')no-repeat center center;
+            margin-left: 4px; }

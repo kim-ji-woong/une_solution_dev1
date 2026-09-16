@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="subTypeMapper">
+
+	<select id="selectSubTypes" parameterType="map" resultType="egovframework.base.model.sensor.SubType">
+		Select * from fa_sensor_sub_ty
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSubType" parameterType="egovframework.base.model.sensor.SubType">
+		INSERT INTO fa_sensor_sub_ty (sensor_ty_optn_code, sensor_ty_code, sensor_sub_ty_no, sensor_sub_ty_name, uom, descp)
+		VALUES (#{sensor_ty_optn_code}, #{sensor_ty_code}, #{sensor_sub_ty_no}, #{sensor_sub_ty_name}, #{uom}, #{descp})
+	</insert>
+
+	<insert id="insertSubTypes" parameterType="java.util.List">
+		INSERT INTO fa_sensor_sub_ty (sensor_ty_optn_code, sensor_ty_code, sensor_sub_ty_no, sensor_sub_ty_name, uom, descp)
+		VALUES
+		<foreach collection="list" item="subType" separator=",">
+			(
+				(#{subType.sensor_ty_optn_code}, #{subType.sensor_ty_code}, #{subType.sensor_sub_ty_no}, #{subType.sensor_sub_ty_name}, #{subType.uom}, #{subType.descp})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSubType" parameterType="egovframework.base.model.sensor.SubType">
+		UPDATE fa_sensor_sub_ty
+		SET sensor_sub_ty_name = #{sensor_sub_ty_name}, uom = #{uom}, descp = #{descp}
+		<where>
+			sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}, sensor_sub_ty_no = #{sensor_sub_ty_no}
+		</where>
+	</update>
+
+	<update id="updateSubTypeByCondition" parameterType="map">
+		UPDATE fa_sensor_sub_ty
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSubType" parameterType="egovframework.base.model.sensor.SubType">
+		DELETE FROM fa_sensor_sub_ty
+		<where>
+			sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}, sensor_sub_ty_no = #{sensor_sub_ty_no}
+		</where>
+	</delete>
+
+	<delete id="deleteSubTypeByCondition" parameterType="map">
+		DELETE FROM fa_sensor_sub_ty
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="temporaryMemberMapper">
+
+	<select id="selectTemporaryMembers" parameterType="map" resultType="egovframework.base.model.common.team.TemporaryMember">
+		Select * from co_team_tmpr_memb
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertTemporaryMember" parameterType="egovframework.base.model.common.team.TemporaryMember" useGeneratedKeys="true" keyProperty="tmpr_memb_sn">
+		INSERT INTO co_team_tmpr_memb (disp_name, tmpr_sn, rgl_sn, rgl_memb_sn, role_optn_no, role_no, memo)
+		VALUES (#{disp_name}, #{tmpr_sn}, #{rgl_sn}, #{rgl_memb_sn}, #{role_optn_no}, #{role_no}, #{memo})
+	</insert>
+
+	<insert id="insertTemporaryMembers" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="tmpr_memb_sn">
+		INSERT INTO co_team_tmpr_memb (disp_name, tmpr_sn, rgl_sn, rgl_memb_sn, role_optn_no, role_no, memo)
+		VALUES
+		<foreach collection="list" item="temporaryMember" separator=",">
+			(
+				(#{temporaryMember.disp_name}, #{temporaryMember.tmpr_sn}, #{temporaryMember.rgl_sn}, #{temporaryMember.rgl_memb_sn}, #{temporaryMember.role_optn_no}, #{temporaryMember.role_no}, #{temporaryMember.memo})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateTemporaryMember" parameterType="egovframework.base.model.common.team.TemporaryMember">
+		UPDATE co_team_tmpr_memb
+		SET disp_name = #{disp_name}, tmpr_sn = #{tmpr_sn}, rgl_sn = #{rgl_sn}, rgl_memb_sn = #{rgl_memb_sn}, role_optn_no = #{role_optn_no}, role_no = #{role_no}, memo = #{memo}
+		<where>
+			tmpr_memb_sn = #{tmpr_memb_sn}
+		</where>
+	</update>
+
+	<update id="updateTemporaryMemberByCondition" parameterType="map">
+		UPDATE co_team_tmpr_memb
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteTemporaryMember" parameterType="egovframework.base.model.common.team.TemporaryMember">
+		DELETE FROM co_team_tmpr_memb
+		<where>
+			tmpr_memb_sn = #{tmpr_memb_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteTemporaryMemberByCondition" parameterType="map">
+		DELETE FROM co_team_tmpr_memb
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

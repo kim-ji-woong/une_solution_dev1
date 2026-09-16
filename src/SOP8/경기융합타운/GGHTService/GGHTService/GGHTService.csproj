@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\IntegrationServer\IntegrationServer\Datas\ID.cs" Link="Models\ID.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\Base\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\..\Utility\dnsCommunicateSOPWebServer\dnsCommunicateSOPWebServer.csproj" />
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData.csproj" />
+  </ItemGroup>
+
+</Project>

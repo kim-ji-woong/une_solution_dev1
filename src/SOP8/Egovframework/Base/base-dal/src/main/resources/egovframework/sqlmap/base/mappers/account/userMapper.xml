@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userMapper">
+
+	<select id="selectUsers" parameterType="map" resultType="egovframework.base.model.account.User">
+		Select * from acc_user
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertUser" parameterType="egovframework.base.model.account.User" useGeneratedKeys="true" keyProperty="user_sn">
+		INSERT INTO acc_user (grad_sn, rgl_memb_sn, password, user_id, user_name, password_key, password_salt, site_sn, memo)
+		VALUES (#{grad_sn}, #{rgl_memb_sn}, #{password}, #{user_id}, #{user_name}, #{password_key}, #{password_salt}, #{site_sn}, #{memo})
+	</insert>
+
+	<insert id="insertUsers" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="user_sn">
+		INSERT INTO acc_user (grad_sn, rgl_memb_sn, password, user_id, user_name, password_key, password_salt, site_sn, memo)
+		VALUES
+		<foreach collection="list" item="user" separator=",">
+			(
+				(#{user.grad_sn}, #{user.rgl_memb_sn}, #{user.password}, #{user.user_id}, #{user.user_name}, #{user.password_key}, #{user.password_salt}, #{user.site_sn}, #{user.memo})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateUser" parameterType="egovframework.base.model.account.User">
+		UPDATE acc_user
+		SET grad_sn = #{grad_sn}, rgl_memb_sn = #{rgl_memb_sn}, password = #{password}, user_id = #{user_id}, user_name = #{user_name}, password_key = #{password_key}, password_salt = #{password_salt}, site_sn = #{site_sn}, memo = #{memo}
+		<where>
+			user_sn = #{user_sn}
+		</where>
+	</update>
+
+	<update id="updateUserByCondition" parameterType="map">
+		UPDATE acc_user
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteUser" parameterType="egovframework.base.model.account.User">
+		DELETE FROM acc_user
+		<where>
+			user_sn = #{user_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteUserByCondition" parameterType="map">
+		DELETE FROM acc_user
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

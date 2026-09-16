@@ -1,0 +1,406 @@
+
+.arrowLine {
+    fill: none;
+    stroke: #485775;
+    stroke-width: 4px;
+}
+
+.arrowTriangle {
+    fill: #485775;
+}
+
+.menuBtn {
+    padding: 10px;
+    margin-right: 20px;
+    border: 1px solid white;
+}
+
+    .menuBtn.active,
+    .menuBtn:hover {
+        background-color: pink;
+        cursor: pointer;
+    }
+
+.sopTitle {
+    width: 100%;
+    height: 50px;
+    background-color: #cedffb;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid black;
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+
+.sectionPanels {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: auto;
+}
+
+.stepMemberTitle {
+    width: 100%;
+    height: 50px;
+    background-color: #efe4b0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.sectionGrid {
+    position: relative;
+    /* 일부러 과하게 잡았다. */
+    width: 2100px;
+    height: 1400px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 37px;
+    margin-left: 37px;
+}
+
+    .sectionGrid > .sectionGridColumn > .sectionGridCell:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-right: 1px dotted #eb134b;
+        border-bottom: 1px dotted #eb134b;
+    }
+
+    .sectionGrid.disableBorder {
+        /* left: -400px; */
+    }
+
+    .sectionGrid.disableBorder > .sectionGridColumn > .sectionGridCell:after {
+        border: 0;
+        /*background-color: #162234;*/
+        /*z-index:1;*/
+    }
+
+.sectionGridColumn {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.sectionGrid .sectionGridColumn {
+    flex-wrap: nowrap;
+    /*z-index:2;*/
+}
+
+.sectionGridCell {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*z-index: 0;*/
+}
+
+    .sectionGridCell.selected {
+        background-color: rgba(180, 180, 180, 0.3);
+    }
+
+.sectionGrid > .sectionGridColumn > .sectionGridCell {
+    flex-shrink: 0;
+}
+
+.sectionGrid > svg {
+    width: 10000px;
+    height: 10000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sectionGrid.disableBorder > svg {
+    background-color: #1B212C;
+}
+
+.sectionPanels > .sectionPanel > .sectionGrid > .sectionGridColumn > .sectionGridCell:hover:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border: 2px solid yellow;
+}
+
+.sectionGrid > .sectionGridColumn > .sectionGridCell:first-child {
+    border-top: 0;
+}
+
+/* Section Componnet위의 화살표 버튼 */
+.btnArrowTop {
+    position: absolute;
+    width: 20px;
+    height: 12px;
+    top: -20px;
+    background-image: url('../img/chart/btnArrowUp_normal.png');
+    background-size: 20px 12px;
+    opacity: 0;
+    z-index: 1;
+}
+
+.decisionArrowBox .btnArrowTop,
+.annotationArrowBox .btnArrowTop,
+.internalArrowBox .btnArrowTop {
+    top: -15px;
+}
+
+.btnArrowTop:hover {
+    background-image: url('../img/chart/btnArrowUp_dark.png');
+}
+
+.btnArrowBottom {
+    position: absolute;
+    width: 20px;
+    height: 12px;
+    bottom: -20px;
+    background-image: url('../img/chart/btnArrowDown_normal.png');
+    background-size: 20px 12px;
+    opacity: 0;
+    z-index: 1;
+}
+
+.decisionArrowBox .btnArrowBottom,
+.annotationArrowBox .btnArrowBottom,
+.internalArrowBox .btnArrowBottom {
+    bottom: -15px;
+}
+
+.btnArrowBottom:hover {
+    background-image: url('../img/chart/btnArrowDown_dark.png');
+}
+
+.btnArrowLeft {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    left: -20px;
+    background-image: url('../img/chart/btnArrowLeft_normal.png');
+    background-size: 12px 20px;
+    opacity: 0;
+    z-index: 1;
+}
+
+.decisionArrowBox .btnArrowLeft,
+.annotationArrowBox .btnArrowLeft,
+.internalArrowBox .btnArrowLeft {
+    left: -15px;
+}
+
+.btnArrowLeft:hover {
+    background-image: url('../img/chart/btnArrowLeft_dark.png');
+}
+
+.btnArrowRight {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    right: -20px;
+    background-image: url('../img/chart/btnArrowRight_normal.png');
+    background-size: 12px 20px;
+    opacity: 0;
+    z-index: 1;
+}
+
+.decisionArrowBox .btnArrowRight,
+.annotationArrowBox .btnArrowRight,
+.internalArrowBox .btnArrowRight {
+    right: -15px;
+}
+
+.btnArrowRight:hover {
+    background-image: url('../img/chart/btnArrowRight_dark.png');
+}
+
+/* Section Component */
+.sectionComponent {
+    position: relative;
+    width: calc(100% - 50px - 50px);
+    height: calc(100% - 60px - 60px);
+    background-color: #f0f5fd;
+    border: 5px solid #9cbaf3;
+    box-sizing: border-box;
+    /* color: var(--colorComponentFont); */
+    color:#000000 !important;
+    text-align: center;
+    font-size: 1.2em;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*z-index: 0.6;*/
+    font-size: 18px;
+    font-weight: 500;
+}
+
+    .sectionGridCell:hover .decisionArrowBox .btnArrowTop,
+    .sectionGridCell:hover .decisionArrowBox .btnArrowBottom,
+    .sectionGridCell:hover .decisionArrowBox .btnArrowLeft,
+    .sectionGridCell:hover .decisionArrowBox .btnArrowRight,
+    .sectionGridCell:hover .internalArrowBox .btnArrowTop,
+    .sectionGridCell:hover .internalArrowBox .btnArrowBottom,
+    .sectionGridCell:hover .internalArrowBox .btnArrowLeft,
+    .sectionGridCell:hover .internalArrowBox .btnArrowRight,
+    .sectionComponent:hover .btnArrowTop,
+    .sectionComponent:hover .btnArrowBottom,
+    .sectionComponent:hover .btnArrowLeft,
+    .sectionComponent:hover .btnArrowRight,
+    .internalArrowBox:hover .btnArrowTop,
+    .internalArrowBox:hover .btnArrowBottom,
+    .internalArrowBox:hover .btnArrowLeft,
+    .internalArrowBox:hover .btnArrowRight,
+    .annotationArrowBox:hover .btnArrowTop,
+    .annotationArrowBox:hover .btnArrowBottom,
+    .annotationArrowBox:hover .btnArrowLeft,
+    .annotationArrowBox:hover .btnArrowRight,
+    .decisionArrowBox:hover .btnArrowTop,
+    .decisionArrowBox:hover .btnArrowBottom,
+    .decisionArrowBox:hover .btnArrowLeft,
+    .decisionArrowBox:hover .btnArrowRight {
+        opacity: 1;
+    }
+
+    .sectionMark.broad {
+        border: 1px solid #e91915;
+        background-color: #e91915;
+    }
+
+        .sectionMark.broad.internal {
+            left: -12px;
+            top: -5px;
+        }
+
+        .sectionMark.auto.internal {
+            left: -12px;
+            bottom: 55px;
+        }
+
+.sectionComponent.decision {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.decisionInner {
+    position: absolute;
+    margin: auto;
+    font-size: 1.5em;
+}
+
+.sectionGrid {
+    /* margin-top: 37px;
+    margin-left: 138px; */
+}
+
+    .sectionGrid > .sectionGridColumn > .sectionGridCell:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-right: 1px dotted #eb134b;
+        border-bottom: 1px dotted #eb134b;
+        
+    }
+
+    .sectionGrid.disableBorder > .sectionGridColumn > .sectionGridCell:after {
+        border: 0;
+    }
+
+.sectionGrid.disableBorder > .sectionGridColumn > .sectionGridCell > #selectedComponent {
+    border: 5px solid #0095FF;
+    background-color: #0095FF;
+    color: #000000;
+}
+
+.arrowText {
+    fill: #F7F7F7;
+}
+
+.noDrag {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    /*-khtml-user-select: none;*/
+    user-select: none;
+}
+
+.svgPolyline {
+    fill: none;
+    stroke-width: 2;
+    stroke: blueviolet;
+}
+
+.defaultGrid {
+    margin-top: 37px;
+    margin-left: 37px;
+    /* width: 75%; */
+    width: 70%;
+    height: 94%;
+    z-index: 98;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background: #fff;
+}
+
+.defaultGridArea {
+    width: 80%;
+    height: 46%;
+    background-color: rgba(112, 112, 112, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px dashed black;
+    position: relative;
+    left: 20%;
+}
+
+.defaultButtonAreaV {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.defaultButtonAreaH {
+    width: 350px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .defaultButtonAreaH button {
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        background: #3764BA;
+        border-radius: 4px;
+    }
+
+.panelScrollbar { overflow-y: auto }
+.panelScrollbar::-webkit-scrollbar { width: 6px; height: 6px; background: none; border-radius: 3px; }
+.panelScrollbar::-webkit-scrollbar-thumb { background: #0095FF; border-radius: 3px; opacity: .4 }
+.panelScrollbar::-webkit-scrollbar-track { background: none }

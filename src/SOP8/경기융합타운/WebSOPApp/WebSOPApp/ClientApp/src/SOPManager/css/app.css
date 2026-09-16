@@ -1,0 +1,86 @@
+:root
+{
+    /* Html Tag */
+    --sizeFontSopTitle: 1.2em;
+    --colorTextSopTitle: white;
+    --colorBkSopTitle: #23a9f2;
+}
+
+.smMainMenuParent {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.smMainNavMenus {
+    position: fixed;
+    top: 80px;
+    z-index: 1;
+    margin-left: -200px;
+}
+
+.smComponentMenuParent
+{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.smComponentNavMenus {
+    position: fixed;
+    top: 80px;
+    z-index: 1;
+    margin-right: -200px;
+}
+
+.smMainNavMenus ul,
+.smComponentNavMenus ul
+{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuBtn
+{
+    padding: 10px;
+    margin-right: 20px;
+    border: 1px solid white;
+}
+
+.menuBtn.active,
+.menuBtn:hover
+{
+    background-color: pink;
+    cursor: pointer;
+}
+
+.panelAreas
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sopTitle
+{
+    width: 100%;
+    height: 50px;
+    background-color: var(--colorBkSopTitle);
+    text-align: center;
+    line-height: 50px;
+    font-size: var(--sizeFontSopTitle);
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.sectionPanels
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.componentPropertyParent {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\SDMS\Base.SDMS.BLL\Process\ManualAlarmChecker.cs" Link="External\ManualAlarmChecker.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+    <ProjectReference Include="..\..\..\Utility\Response\Response.csproj" />
+    <ProjectReference Include="..\..\Base.DAL\Base.DAL.csproj" />
+    <ProjectReference Include="..\..\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\SOPSimulator\Base.SOPSimulator.IBLL\Base.SOPSimulator.IBLL.csproj" />
+    <ProjectReference Include="..\SOPWebServer.IBLL\SOPWebServer.IBLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="External\" />
+  </ItemGroup>
+
+</Project>

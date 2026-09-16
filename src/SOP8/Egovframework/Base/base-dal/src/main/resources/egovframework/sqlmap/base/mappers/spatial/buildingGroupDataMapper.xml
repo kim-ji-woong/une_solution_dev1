@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buildingGroupDataMapper">
+
+	<select id="selectBuildingGroupDatas" parameterType="map" resultType="egovframework.base.model.spatial.BuildingGroupData">
+		Select * from sp_buld_group_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertBuildingGroupData" parameterType="egovframework.base.model.spatial.BuildingGroupData">
+		INSERT INTO sp_buld_group_data (buld_group_sn, ordr_indx, value, wdt, indent_level)
+		VALUES (#{buld_group_sn}, #{ordr_indx}, #{value}, #{wdt}, #{indent_level})
+	</insert>
+
+	<insert id="insertBuildingGroupDatas" parameterType="java.util.List">
+		INSERT INTO sp_buld_group_data (buld_group_sn, ordr_indx, value, wdt, indent_level)
+		VALUES
+		<foreach collection="list" item="buildingGroupData" separator=",">
+			(
+				(#{buildingGroupData.buld_group_sn}, #{buildingGroupData.ordr_indx}, #{buildingGroupData.value}, #{buildingGroupData.wdt}, #{buildingGroupData.indent_level})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateBuildingGroupData" parameterType="egovframework.base.model.spatial.BuildingGroupData">
+		UPDATE sp_buld_group_data
+		SET value = #{value}, wdt = #{wdt}, indent_level = #{indent_level}
+		<where>
+			buld_group_sn = #{buld_group_sn}, ordr_indx = #{ordr_indx}
+		</where>
+	</update>
+
+	<update id="updateBuildingGroupDataByCondition" parameterType="map">
+		UPDATE sp_buld_group_data
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteBuildingGroupData" parameterType="egovframework.base.model.spatial.BuildingGroupData">
+		DELETE FROM sp_buld_group_data
+		<where>
+			buld_group_sn = #{buld_group_sn}, ordr_indx = #{ordr_indx}
+		</where>
+	</delete>
+
+	<delete id="deleteBuildingGroupDataByCondition" parameterType="map">
+		DELETE FROM sp_buld_group_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

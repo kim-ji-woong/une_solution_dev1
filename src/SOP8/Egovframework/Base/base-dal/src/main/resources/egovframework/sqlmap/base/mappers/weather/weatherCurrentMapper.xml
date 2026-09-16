@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="weatherCurrentMapper">
+
+	<select id="selectWeatherCurrents" parameterType="map" resultType="egovframework.base.model.weather.WeatherCurrent">
+		Select * from wt_cur
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertWeatherCurrent" parameterType="egovframework.base.model.weather.WeatherCurrent">
+		INSERT INTO wt_cur (wethr_site_sn, tp, sensb_tp, rain, hd, wind_spd, atm, updt_tm, wethr_sttus_optn_code, wethr_sttus_code, wind_drc_optn_code, wind_drc_code)
+		VALUES (#{wethr_site_sn}, #{tp}, #{sensb_tp}, #{rain}, #{hd}, #{wind_spd}, #{atm}, #{updt_tm}, #{wethr_sttus_optn_code}, #{wethr_sttus_code}, #{wind_drc_optn_code}, #{wind_drc_code})
+	</insert>
+
+	<insert id="insertWeatherCurrents" parameterType="java.util.List">
+		INSERT INTO wt_cur (wethr_site_sn, tp, sensb_tp, rain, hd, wind_spd, atm, updt_tm, wethr_sttus_optn_code, wethr_sttus_code, wind_drc_optn_code, wind_drc_code)
+		VALUES
+		<foreach collection="list" item="weatherCurrent" separator=",">
+			(
+				(#{weatherCurrent.wethr_site_sn}, #{weatherCurrent.tp}, #{weatherCurrent.sensb_tp}, #{weatherCurrent.rain}, #{weatherCurrent.hd}, #{weatherCurrent.wind_spd}, #{weatherCurrent.atm}, #{weatherCurrent.updt_tm}, #{weatherCurrent.wethr_sttus_optn_code}, #{weatherCurrent.wethr_sttus_code}, #{weatherCurrent.wind_drc_optn_code}, #{weatherCurrent.wind_drc_code})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateWeatherCurrent" parameterType="egovframework.base.model.weather.WeatherCurrent">
+		UPDATE wt_cur
+		SET tp = #{tp}, sensb_tp = #{sensb_tp}, rain = #{rain}, hd = #{hd}, wind_spd = #{wind_spd}, atm = #{atm}, updt_tm = #{updt_tm}, wethr_sttus_optn_code = #{wethr_sttus_optn_code}, wethr_sttus_code = #{wethr_sttus_code}, wind_drc_optn_code = #{wind_drc_optn_code}, wind_drc_code = #{wind_drc_code}
+		<where>
+			wethr_site_sn = #{wethr_site_sn}
+		</where>
+	</update>
+
+	<update id="updateWeatherCurrentByCondition" parameterType="map">
+		UPDATE wt_cur
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteWeatherCurrent" parameterType="egovframework.base.model.weather.WeatherCurrent">
+		DELETE FROM wt_cur
+		<where>
+			wethr_site_sn = #{wethr_site_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteWeatherCurrentByCondition" parameterType="map">
+		DELETE FROM wt_cur
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

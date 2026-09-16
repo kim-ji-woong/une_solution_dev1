@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="broadcastMapper">
+
+	<select id="selectBroadcasts" parameterType="map" resultType="egovframework.base.model.history.Broadcast">
+		Select * from his_brdcst
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertBroadcast" parameterType="egovframework.base.model.history.Broadcast" useGeneratedKeys="true" keyProperty="brdcst_hist_sn">
+		INSERT INTO his_brdcst (text, siren_yn, brdcst_sttus_optn_code, brdcst_sttus_code, repit_cnt, requst_time, execut_time, site_sn)
+		VALUES (#{text}, #{siren_yn}, #{brdcst_sttus_optn_code}, #{brdcst_sttus_code}, #{repit_cnt}, #{requst_time}, #{execut_time}, #{site_sn})
+	</insert>
+
+	<insert id="insertBroadcasts" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="brdcst_hist_sn">
+		INSERT INTO his_brdcst (text, siren_yn, brdcst_sttus_optn_code, brdcst_sttus_code, repit_cnt, requst_time, execut_time, site_sn)
+		VALUES
+		<foreach collection="list" item="broadcast" separator=",">
+			(
+				(#{broadcast.text}, #{broadcast.siren_yn}, #{broadcast.brdcst_sttus_optn_code}, #{broadcast.brdcst_sttus_code}, #{broadcast.repit_cnt}, #{broadcast.requst_time}, #{broadcast.execut_time}, #{broadcast.site_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateBroadcast" parameterType="egovframework.base.model.history.Broadcast">
+		UPDATE his_brdcst
+		SET text = #{text}, siren_yn = #{siren_yn}, brdcst_sttus_optn_code = #{brdcst_sttus_optn_code}, brdcst_sttus_code = #{brdcst_sttus_code}, repit_cnt = #{repit_cnt}, requst_time = #{requst_time}, execut_time = #{execut_time}, site_sn = #{site_sn}
+		<where>
+			brdcst_hist_sn = #{brdcst_hist_sn}
+		</where>
+	</update>
+
+	<update id="updateBroadcastByCondition" parameterType="map">
+		UPDATE his_brdcst
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteBroadcast" parameterType="egovframework.base.model.history.Broadcast">
+		DELETE FROM his_brdcst
+		<where>
+			brdcst_hist_sn = #{brdcst_hist_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteBroadcastByCondition" parameterType="map">
+		DELETE FROM his_brdcst
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

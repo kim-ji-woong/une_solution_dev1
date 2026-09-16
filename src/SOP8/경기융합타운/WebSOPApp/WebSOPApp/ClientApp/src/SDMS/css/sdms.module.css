@@ -1,0 +1,307 @@
+﻿.bodyArea {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.mainNavMenus {
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+    margin-left: -200px;
+    background-color: #1e2430;
+}
+.menuBtn {
+    margin: 2px 2px 2px 2px;
+    padding: 10px;
+    margin-right: 20px;
+    border: 1px solid white;
+    color: white;
+}
+
+.menuBtn.active,
+.menuBtn:hover {
+    background-color: pink;
+    cursor: pointer;
+}
+
+.menuArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 600px;
+    background-color: navy;
+    z-index: 10;
+    display: none;
+}
+
+.menuArea label {
+    color: white;
+}
+
+.menuArea.visible
+{
+    display: block;
+}
+
+.menuTitle {
+    font-size: 16px;
+    display: inline-flex;
+    text-align:center;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.horzArea,
+.horzAreaSensor {
+    display: flex;
+}
+
+/* Menu selectBox */
+.selectionBox {
+    position: relative;
+    z-index: 50;
+    font-size: 16px;
+    font-weight: 100;
+    background-color: #1A1C2C;
+    border-radius: 4px;
+    width: 130px;
+    margin-left: 5px;
+}
+
+    .selectionBox button {
+        width: 100%;
+        padding: 11px 10px;
+        padding-right: 40px;
+        font-weight: 100;
+        text-align: left;
+        vertical-align: top;
+        color: white;
+    }
+
+    .selectionBox .selectionTxt:after {
+        content: '';
+        position: absolute;
+        top: 13px;
+        right: 12px;
+        width: 8px;
+        height: 8px;
+        border-left: 2px solid #5F616C;
+        border-bottom: 2px solid #5F616C;
+        transform: rotate(-45deg);
+    }
+
+    .selectionBox ul {
+        display: none;
+        position: absolute;
+        width: 100%;
+        padding: 10px 0;
+        background-color: #1A1C2C
+    }
+
+    .selectionBox.isShow {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0
+    }
+
+        .selectionBox.isShow .selectionTxt:after {
+            top: 17px;
+            transform: rotate(135deg)
+        }
+
+        .selectionBox.isShow ul {
+            display: block
+        }
+
+.menuBtnViewport,
+.menuBtnBuildingName,
+.menuBtnSensor {
+    background-color: gray;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 10px;
+}
+
+.inputText {
+    color: black;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.btmPopupImg {
+    width: auto;
+    max-width: none;
+}
+
+.sensorName {
+    color: yellow;
+    margin-top: 10px;
+}
+
+    .sensorName.marginBottom10 {
+        margin-bottom: 10px;
+    }
+
+.labelInput {
+    position: relative;
+    top: -2px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 15px;
+    color: white;
+}
+
+/* 미니맵 */
+.miniMapConts {
+    padding: 10px;
+    height: calc(100% - 40px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    .miniMapConts p {
+        position: absolute;
+        top: 35px;
+        padding: 10px;
+        box-sizing: border-box;
+        height: 40px;
+        font-size: 16px;
+        font-weight: 100;
+        color: white;
+        background-color: #00000044;
+    }
+
+    .miniMapConts img {
+        width: auto; 
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.detailBtn {
+    position: absolute;
+    right: 24px;
+    top: 54px;
+}
+
+
+.nonScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.width100 {
+    width: 100px;
+}
+
+.menuBtnModel {
+    background-color: gray;
+    border-radius: 4px;
+    margin-top: 11px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 10px;
+}
+
+.labelInput {
+    position: relative;
+    top: -2px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 15px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+    .clickable.whiteText {
+        color: white;
+    }
+
+.closeBroadcast {
+    position: absolute;
+    left: 1810px;
+    top: 88px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+}
+
+#areaInput {
+    position: absolute;
+    border-radius: 5px;
+    display: block;
+    border: solid 2px #3999ed;
+    width: 100px !important;
+}
+
+#areaInputHidden {
+    display: none;
+}
+
+
+.scrollbar{ overflow-x:scroll; overflow-y:scroll;} /* 0103 */
+.scrollbar::-webkit-scrollbar{width:5.5px; /* background-color: rgb(61, 63, 71); */}  /* 1231 */
+.scrollbar::-webkit-scrollbar-thumb{background-color: rgb(125, 131, 137); opacity:.4} 
+.scrollbar::-webkit-scrollbar-track{/*background:none */ background-color: rgb(61, 63, 71); border-radius:3px; } /* 0103 */ 
+.scrollbar::-webkit-scrollbar-corner{ display:none; }
+
+
+.imgBroadcast {
+	display: block;
+    position: absolute;
+	left: 80px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+	margin-top: -8px;
+    cursor: pointer;
+}
+
+/* 관제화면 eventPopUp - css */
+
+#hsMmo{ position: fixed; right: 550px; top: 310px; z-index: 1; }
+.memoTitle{ background: #141b2a; border-top-left-radius: 5px; border-top-right-radius: 5px; height: 30px; }
+.memoTitle:after {content: ''; display: table; clear: both;}
+.memoTitle span {float: left; height: 30px; line-height: 30px; font-size: 12px; padding-left:10px; color:#dba72b; }
+.memoTitle p{ color:#fff; font-size: 10px; float:left; line-height: 35px; padding-left: 215px; }
+.memoCancel {display: block; float: right; width: 30px; height: 30px; text-indent: -9999px; background: url('../../Common/img/sub/dashboard_layer_close.png')no-repeat center center; }
+.memoContents{ display:block; height:260px; background: #fff; margin: 10px 15px; border-radius: 10px; }
+
+.memoTxt {height: 240px; border: solid 1px #ddd; margin-top: 10px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; border:dashed 1px red; }
+.memoTxt .scroll-bar {background: rgba(0,0,0,0.2) !important;}
+textarea.memoTxt {padding: 10px !important;}
+.memoBtn { /* padding-top: 10px; */ text-align: end; justify-items: end; margin: 0 10px; }
+.memoBtn li {display: inline-block; margin: 0 2px; text-align:center; }
+.memoBtn li a {display: block; width: 55px; height: 24px; line-height: 24px; font-size: 11px; /* background: #ff8400; */
+               background: #141b2a; color: #fff; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
+.memoBtn li:first-child a {background: #141b2a; border-color: #ddd; color: #fff;}
+.memoBtn li a:hover{ background:#ff8400; }
+
+.memoSaveBox{ display:block; width:300px; height:100px; background: #fff; position:absolute; right:580px; top:68%; z-index:1; padding:13px; border:solid 1px #d7d7d7; border-radius:3px; }
+.memoSaveBox span:nth-child(1){ display:block; font-size:13px; margin-bottom: 10px;  }
+.memoSaveBox span:nth-child(2){ display:block; font-size:12px; color: #8f8f8f; }
+.memoSaveBox .memoBtn2{  text-align: end; justify-items: end; margin: 15px 0; }
+.memoSaveBox .memoBtn2 li{ display: inline-block; margin: 0 3px; text-align:center;  }
+.memoSaveBox .memoBtn2 li a {display: block; width: 55px; height: 24px; line-height: 24px; font-size: 11px; background: #c9c9c9; color: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+.memoSaveBox .memoBtn2 li:first-child a { /* background: #141b2a; */ background:#ff8400; border-color: #ddd; color: #fff;}
+
+
+.memoDeleteBox{ display:block; width:300px; height:100px; background: #fff; position:absolute; right:580px; top:80%; z-index:1; padding:13px; border:solid 1px #d7d7d7; border-radius: 3px; }
+.memoDeleteBox span:nth-child(1){ display:block; font-size:13px; margin-bottom: 10px;  }
+.memoDeleteBox span:nth-child(2){ display:block; font-size:12px; color: #8f8f8f; }
+.memoDeleteBox .memoBtn3{  text-align: end; justify-items: end; margin: 15px 0; }
+.memoDeleteBox .memoBtn3 li{ display: inline-block; margin: 0 3px; text-align:center;  }
+.memoDeleteBox .memoBtn3 li a {display: block; width: 55px; height: 24px; line-height: 24px; font-size: 11px; background: #c9c9c9; color: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+.memoDeleteBox .memoBtn3 li:first-child a { /* background: #141b2a; */ background:#ff8400; border-color: #ddd; color: #fff;}

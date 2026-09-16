@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commonTeamOptionMapper">
+
+	<select id="selectCommonTeamOptions" parameterType="map" resultType="egovframework.base.model.common.team.CommonTeamOption">
+		Select * from co_team_optn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertCommonTeamOption" parameterType="egovframework.base.model.common.team.CommonTeamOption">
+		INSERT INTO co_team_optn (team_optn_ty_no, team_optn_no, team_optn_name)
+		VALUES (#{team_optn_ty_no}, #{team_optn_no}, #{team_optn_name})
+	</insert>
+
+	<insert id="insertCommonTeamOptions" parameterType="java.util.List">
+		INSERT INTO co_team_optn (team_optn_ty_no, team_optn_no, team_optn_name)
+		VALUES
+		<foreach collection="list" item="commonTeamOption" separator=",">
+			(
+				(#{commonTeamOption.team_optn_ty_no}, #{commonTeamOption.team_optn_no}, #{commonTeamOption.team_optn_name})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateCommonTeamOption" parameterType="egovframework.base.model.common.team.CommonTeamOption">
+		UPDATE co_team_optn
+		SET team_optn_name = #{team_optn_name}
+		<where>
+			team_optn_ty_no = #{team_optn_ty_no}, team_optn_no = #{team_optn_no}
+		</where>
+	</update>
+
+	<update id="updateCommonTeamOptionByCondition" parameterType="map">
+		UPDATE co_team_optn
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteCommonTeamOption" parameterType="egovframework.base.model.common.team.CommonTeamOption">
+		DELETE FROM co_team_optn
+		<where>
+			team_optn_ty_no = #{team_optn_ty_no}, team_optn_no = #{team_optn_no}
+		</where>
+	</delete>
+
+	<delete id="deleteCommonTeamOptionByCondition" parameterType="map">
+		DELETE FROM co_team_optn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

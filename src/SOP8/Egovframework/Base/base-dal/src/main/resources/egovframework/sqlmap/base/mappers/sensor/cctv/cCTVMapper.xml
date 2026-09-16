@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cCTVMapper">
+
+	<select id="selectCCTVs" parameterType="map" resultType="egovframework.base.model.sensor.cctv.CCTV">
+		Select * from fa_cctv
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertCCTV" parameterType="egovframework.base.model.sensor.cctv.CCTV">
+		INSERT INTO fa_cctv (sensor_sn, sensor_ty_optn_code, sensor_ty_code, cctv_no, unq_key, indoor_yn, strmg_ty, chnnl, user_id, password, url, hd_url, ld_url, camera_ip, camera_makr_name, camera_model_name)
+		VALUES (#{sensor_sn}, #{sensor_ty_optn_code}, #{sensor_ty_code}, #{cctv_no}, #{unq_key}, #{indoor_yn}, #{strmg_ty}, #{chnnl}, #{user_id}, #{password}, #{url}, #{hd_url}, #{ld_url}, #{camera_ip}, #{camera_makr_name}, #{camera_model_name})
+	</insert>
+
+	<insert id="insertCCTVs" parameterType="java.util.List">
+		INSERT INTO fa_cctv (sensor_sn, sensor_ty_optn_code, sensor_ty_code, cctv_no, unq_key, indoor_yn, strmg_ty, chnnl, user_id, password, url, hd_url, ld_url, camera_ip, camera_makr_name, camera_model_name)
+		VALUES
+		<foreach collection="list" item="cCTV" separator=",">
+			(
+				(#{cCTV.sensor_sn}, #{cCTV.sensor_ty_optn_code}, #{cCTV.sensor_ty_code}, #{cCTV.cctv_no}, #{cCTV.unq_key}, #{cCTV.indoor_yn}, #{cCTV.strmg_ty}, #{cCTV.chnnl}, #{cCTV.user_id}, #{cCTV.password}, #{cCTV.url}, #{cCTV.hd_url}, #{cCTV.ld_url}, #{cCTV.camera_ip}, #{cCTV.camera_makr_name}, #{cCTV.camera_model_name})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateCCTV" parameterType="egovframework.base.model.sensor.cctv.CCTV">
+		UPDATE fa_cctv
+		SET sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}, cctv_no = #{cctv_no}, unq_key = #{unq_key}, indoor_yn = #{indoor_yn}, strmg_ty = #{strmg_ty}, chnnl = #{chnnl}, user_id = #{user_id}, password = #{password}, url = #{url}, hd_url = #{hd_url}, ld_url = #{ld_url}, camera_ip = #{camera_ip}, camera_makr_name = #{camera_makr_name}, camera_model_name = #{camera_model_name}
+		<where>
+			sensor_sn = #{sensor_sn}
+		</where>
+	</update>
+
+	<update id="updateCCTVByCondition" parameterType="map">
+		UPDATE fa_cctv
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteCCTV" parameterType="egovframework.base.model.sensor.cctv.CCTV">
+		DELETE FROM fa_cctv
+		<where>
+			sensor_sn = #{sensor_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteCCTVByCondition" parameterType="map">
+		DELETE FROM fa_cctv
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,108 @@
+﻿.newSOPOptions {
+    position: fixed;
+    top: 300px;
+    margin-left: -600px;
+}
+
+.newSOPCategories
+{
+    display: flex;
+}
+
+.disasterCategories,
+.subDisasterCategories,
+.disasters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.nsMenu
+{
+    padding: 5px;
+    width: 150px;
+    background-color: pink;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.nsInputOptions {
+    display: flex;
+    margin-top: 10px;
+}
+
+.nsEditSubCategory
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 190px;
+}
+
+.nsEditDisaster {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 205px;
+}
+
+.nsButtons
+{
+    position: relative;
+    left: -7px;
+
+}
+
+.nsBtn {
+    display: inline-block;
+    padding: 5px;
+    background-color: #343333;
+    color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+.nsInputs
+{
+    margin-top: 0px;
+}
+
+.nsBtnCloseArea,
+.osBtnCloseArea
+{
+    margin-top: 10px;
+}
+
+.btnAddSOP,
+.btnOpenSOP
+{
+    position: relative;
+    left: 420px;
+    display: inline-block;
+    padding: 5px;
+    background-color: #343333;
+    color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+.invisible {
+    display: none;
+}
+
+.selected {
+    background-color: hotpink;
+}
+
+.disabled {
+    background-color: #7f7f7f;
+    cursor: not-allowed;
+}

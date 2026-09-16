@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.32" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.1.32" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.32" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Base\Base.Model\Base.Model.csproj" />
+        <ProjectReference Include="..\..\GwangYang.Model\GwangYang.Model.csproj" />
+        <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+        <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="obj\Debug\netcoreapp3.1\GwangyangSensorService.sourcelink.json" />
+      <_ContentIncludedByDefault Remove="obj\GwangyangSensorService.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="obj\project.packagespec.json" />
+    </ItemGroup>
+
+</Project>

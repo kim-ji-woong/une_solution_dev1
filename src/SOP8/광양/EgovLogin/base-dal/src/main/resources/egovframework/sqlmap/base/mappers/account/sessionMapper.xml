@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sessionMapper">
+
+	<select id="selectSessions" parameterType="map" resultType="egovframework.base.model.account.Session">
+		Select * from acc_session
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSession" parameterType="egovframework.base.model.account.Session">
+		INSERT INTO acc_session (user_sn, session_key, creat_de, updt_de, atmc_login_yn)
+		VALUES (#{user_sn}, #{session_key}, #{creat_de}, #{updt_de}, #{atmc_login_yn})
+	</insert>
+
+	<insert id="insertSessions" parameterType="java.util.List">
+		INSERT INTO acc_session (user_sn, session_key, creat_de, updt_de, atmc_login_yn)
+		VALUES
+		<foreach collection="list" item="session" separator=",">
+			(
+				(#{session.user_sn}, #{session.session_key}, #{session.creat_de}, #{session.updt_de}, #{session.atmc_login_yn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSession" parameterType="egovframework.base.model.account.Session">
+		UPDATE acc_session
+		SET session_key = #{session_key}, creat_de = #{creat_de}, updt_de = #{updt_de}, atmc_login_yn = #{atmc_login_yn}
+		<where>
+			user_sn = #{user_sn}
+		</where>
+	</update>
+
+	<update id="updateSessionByCondition" parameterType="map">
+		UPDATE acc_session
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSession" parameterType="egovframework.base.model.account.Session">
+		DELETE FROM acc_session
+		<where>
+			user_sn = #{user_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteSessionByCondition" parameterType="map">
+		DELETE FROM acc_session
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

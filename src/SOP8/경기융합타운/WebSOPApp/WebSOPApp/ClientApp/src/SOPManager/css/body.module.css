@@ -1,0 +1,43 @@
+﻿.col30Pro {
+    width: 30%;
+}
+.col50Pro {
+    width: 50%;
+}
+
+.blockDD {
+    display: block;
+}
+.sopTitle {
+    position: absolute;
+    left: -300px;
+    right: 0;
+    top: 0;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 15px;
+    color: #222;
+    font-size: 26px;
+    font-weight: 700;
+}
+.fullText {
+    position: relative;
+    left: 50px;
+    width: Calc(100% - 50px);
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden2 {
+    display: none;
+}
+
+.noDrag {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    /*-khtml-user-select: none;*/
+    user-select: none;
+}

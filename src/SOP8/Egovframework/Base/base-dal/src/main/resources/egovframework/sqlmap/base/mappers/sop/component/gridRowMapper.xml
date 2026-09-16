@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gridRowMapper">
+
+	<select id="selectGridRows" parameterType="map" resultType="egovframework.base.model.sop.component.GridRow">
+		Select * from so_compn_grid_row
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertGridRow" parameterType="egovframework.base.model.sop.component.GridRow">
+		INSERT INTO so_compn_grid_row (grid_sn, row_no, height)
+		VALUES (#{grid_sn}, #{row_no}, #{height})
+	</insert>
+
+	<insert id="insertGridRows" parameterType="java.util.List">
+		INSERT INTO so_compn_grid_row (grid_sn, row_no, height)
+		VALUES
+		<foreach collection="list" item="gridRow" separator=",">
+			(
+				(#{gridRow.grid_sn}, #{gridRow.row_no}, #{gridRow.height})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateGridRow" parameterType="egovframework.base.model.sop.component.GridRow">
+		UPDATE so_compn_grid_row
+		SET height = #{height}
+		<where>
+			grid_sn = #{grid_sn}, row_no = #{row_no}
+		</where>
+	</update>
+
+	<update id="updateGridRowByCondition" parameterType="map">
+		UPDATE so_compn_grid_row
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteGridRow" parameterType="egovframework.base.model.sop.component.GridRow">
+		DELETE FROM so_compn_grid_row
+		<where>
+			grid_sn = #{grid_sn}, row_no = #{row_no}
+		</where>
+	</delete>
+
+	<delete id="deleteGridRowByCondition" parameterType="map">
+		DELETE FROM so_compn_grid_row
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

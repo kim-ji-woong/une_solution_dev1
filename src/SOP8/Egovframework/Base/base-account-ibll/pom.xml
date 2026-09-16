@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>egovframework.base</groupId>
+        <artifactId>Base</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>base-account-ibll</artifactId>
+    <properties>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<packaging>jar</packaging>
+	
+	<dependencies>
+		<dependency>
+	        <groupId>egovframework.base</groupId>
+	        <artifactId>base-utility</artifactId>
+	        <version>1.0.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>egovframework.base</groupId>
+	        <artifactId>base-model</artifactId>
+	        <version>1.0.0</version>
+	    </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.13.5</version> <!-- Spring Boot 2.7.x 호환 -->
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>Base.Account.IBLL</finalName>
+		<plugins>
+		    <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-jar-plugin</artifactId>
+			  <version>3.2.2</version>
+		      <configuration>
+		        <archive>
+				  <addMavenDescriptor>true</addMavenDescriptor>
+		          <manifest>
+		            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+		          </manifest>
+		        </archive>
+		      </configuration>
+		    </plugin>
+  		</plugins>
+	</build>
+</project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="weeklyMapper">
+
+	<select id="selectWeeklies" parameterType="map" resultType="egovframework.base.model.weather.Weekly">
+		Select * from wt_wkly
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertWeekly" parameterType="egovframework.base.model.weather.Weekly">
+		INSERT INTO wt_wkly (wethr_site_sn, wethr_sttus_optn_code, oneday_after_tp, oneday_after_min_tp, oneday_after_wethr_sttus_code, twoday_after_tp, twoday_after_min_tp, twoday_after_wethr_sttus_code, thrday_after_tp, thrday_after_min_tp, thrday_after_wethr_sttus_code, fourday_after_tp, fourday_after_min_tp, fourday_after_wethr_sttus_code, fiveday_after_tp, fiveday_after_min_tp, fiveday_after_wethr_sttus_code, sixday_after_tp, sixday_after_min_tp, sixday_after_wethr_sttus_code, updt_tm)
+		VALUES (#{wethr_site_sn}, #{wethr_sttus_optn_code}, #{oneday_after_tp}, #{oneday_after_min_tp}, #{oneday_after_wethr_sttus_code}, #{twoday_after_tp}, #{twoday_after_min_tp}, #{twoday_after_wethr_sttus_code}, #{thrday_after_tp}, #{thrday_after_min_tp}, #{thrday_after_wethr_sttus_code}, #{fourday_after_tp}, #{fourday_after_min_tp}, #{fourday_after_wethr_sttus_code}, #{fiveday_after_tp}, #{fiveday_after_min_tp}, #{fiveday_after_wethr_sttus_code}, #{sixday_after_tp}, #{sixday_after_min_tp}, #{sixday_after_wethr_sttus_code}, #{updt_tm})
+	</insert>
+
+	<insert id="insertWeeklies" parameterType="java.util.List">
+		INSERT INTO wt_wkly (wethr_site_sn, wethr_sttus_optn_code, oneday_after_tp, oneday_after_min_tp, oneday_after_wethr_sttus_code, twoday_after_tp, twoday_after_min_tp, twoday_after_wethr_sttus_code, thrday_after_tp, thrday_after_min_tp, thrday_after_wethr_sttus_code, fourday_after_tp, fourday_after_min_tp, fourday_after_wethr_sttus_code, fiveday_after_tp, fiveday_after_min_tp, fiveday_after_wethr_sttus_code, sixday_after_tp, sixday_after_min_tp, sixday_after_wethr_sttus_code, updt_tm)
+		VALUES
+		<foreach collection="list" item="weekly" separator=",">
+			(
+				(#{weekly.wethr_site_sn}, #{weekly.wethr_sttus_optn_code}, #{weekly.oneday_after_tp}, #{weekly.oneday_after_min_tp}, #{weekly.oneday_after_wethr_sttus_code}, #{weekly.twoday_after_tp}, #{weekly.twoday_after_min_tp}, #{weekly.twoday_after_wethr_sttus_code}, #{weekly.thrday_after_tp}, #{weekly.thrday_after_min_tp}, #{weekly.thrday_after_wethr_sttus_code}, #{weekly.fourday_after_tp}, #{weekly.fourday_after_min_tp}, #{weekly.fourday_after_wethr_sttus_code}, #{weekly.fiveday_after_tp}, #{weekly.fiveday_after_min_tp}, #{weekly.fiveday_after_wethr_sttus_code}, #{weekly.sixday_after_tp}, #{weekly.sixday_after_min_tp}, #{weekly.sixday_after_wethr_sttus_code}, #{weekly.updt_tm})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateWeekly" parameterType="egovframework.base.model.weather.Weekly">
+		UPDATE wt_wkly
+		SET wethr_sttus_optn_code = #{wethr_sttus_optn_code}, oneday_after_tp = #{oneday_after_tp}, oneday_after_min_tp = #{oneday_after_min_tp}, oneday_after_wethr_sttus_code = #{oneday_after_wethr_sttus_code}, twoday_after_tp = #{twoday_after_tp}, twoday_after_min_tp = #{twoday_after_min_tp}, twoday_after_wethr_sttus_code = #{twoday_after_wethr_sttus_code}, thrday_after_tp = #{thrday_after_tp}, thrday_after_min_tp = #{thrday_after_min_tp}, thrday_after_wethr_sttus_code = #{thrday_after_wethr_sttus_code}, fourday_after_tp = #{fourday_after_tp}, fourday_after_min_tp = #{fourday_after_min_tp}, fourday_after_wethr_sttus_code = #{fourday_after_wethr_sttus_code}, fiveday_after_tp = #{fiveday_after_tp}, fiveday_after_min_tp = #{fiveday_after_min_tp}, fiveday_after_wethr_sttus_code = #{fiveday_after_wethr_sttus_code}, sixday_after_tp = #{sixday_after_tp}, sixday_after_min_tp = #{sixday_after_min_tp}, sixday_after_wethr_sttus_code = #{sixday_after_wethr_sttus_code}, updt_tm = #{updt_tm}
+		<where>
+			wethr_site_sn = #{wethr_site_sn}
+		</where>
+	</update>
+
+	<update id="updateWeeklyByCondition" parameterType="map">
+		UPDATE wt_wkly
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteWeekly" parameterType="egovframework.base.model.weather.Weekly">
+		DELETE FROM wt_wkly
+		<where>
+			wethr_site_sn = #{wethr_site_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteWeeklyByCondition" parameterType="map">
+		DELETE FROM wt_wkly
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

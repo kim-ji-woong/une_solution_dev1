@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Base\SensorControlServer\dnsSensorServer\dnsSensorServer.csproj" />
+    <ProjectReference Include="..\..\dnsDataKftc\dnsDataKftc.csproj" />
+    <ProjectReference Include="..\..\Kftc.Model\Kftc.Model.csproj" />
+  </ItemGroup>
+
+</Project>

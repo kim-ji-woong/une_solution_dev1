@@ -1,0 +1,27 @@
+package egovframework.base.model.sensor;
+
+import lombok.*;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class MaterialRangeLimitData {
+	public enum Fields { sensor_zone_sn, lim_indx, range_indx, usab, min, max }
+
+	private int sensor_zone_sn;
+
+	private int lim_indx;
+
+	private int range_indx;
+
+	private Boolean usab;
+
+	private double min;
+
+	private double max;
+
+	public static final String autoIncreaseField = null;
+	public static final String tableName = "fa_sensor_material_range_lim_data";
+	public static final String[] primaryKeys = { "sensor_zone_sn", "lim_indx", "range_indx" };
+
+}

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+    <ProjectReference Include="..\..\..\Utility\Response\Response.csproj" />
+    <ProjectReference Include="..\..\Base.Model\Base.Model.csproj" />
+  </ItemGroup>
+
+</Project>

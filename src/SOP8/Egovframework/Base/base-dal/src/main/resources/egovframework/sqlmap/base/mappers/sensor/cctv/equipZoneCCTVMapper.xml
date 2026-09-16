@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="equipZoneCCTVMapper">
+
+	<select id="selectEquipZoneCCTVs" parameterType="map" resultType="egovframework.base.model.sensor.cctv.EquipZoneCCTV">
+		Select * from fa_eqp_zone_cctv
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertEquipZoneCCTV" parameterType="egovframework.base.model.sensor.cctv.EquipZoneCCTV">
+		INSERT INTO fa_eqp_zone_cctv (eqp_zone_sn, cctv_1, cctv_2, cctv_3, cctv_4)
+		VALUES (#{eqp_zone_sn}, #{cctv_1}, #{cctv_2}, #{cctv_3}, #{cctv_4})
+	</insert>
+
+	<insert id="insertEquipZoneCCTVs" parameterType="java.util.List">
+		INSERT INTO fa_eqp_zone_cctv (eqp_zone_sn, cctv_1, cctv_2, cctv_3, cctv_4)
+		VALUES
+		<foreach collection="list" item="equipZoneCCTV" separator=",">
+			(
+				(#{equipZoneCCTV.eqp_zone_sn}, #{equipZoneCCTV.cctv_1}, #{equipZoneCCTV.cctv_2}, #{equipZoneCCTV.cctv_3}, #{equipZoneCCTV.cctv_4})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateEquipZoneCCTV" parameterType="egovframework.base.model.sensor.cctv.EquipZoneCCTV">
+		UPDATE fa_eqp_zone_cctv
+		SET cctv_1 = #{cctv_1}, cctv_2 = #{cctv_2}, cctv_3 = #{cctv_3}, cctv_4 = #{cctv_4}
+		<where>
+			eqp_zone_sn = #{eqp_zone_sn}
+		</where>
+	</update>
+
+	<update id="updateEquipZoneCCTVByCondition" parameterType="map">
+		UPDATE fa_eqp_zone_cctv
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteEquipZoneCCTV" parameterType="egovframework.base.model.sensor.cctv.EquipZoneCCTV">
+		DELETE FROM fa_eqp_zone_cctv
+		<where>
+			eqp_zone_sn = #{eqp_zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteEquipZoneCCTVByCondition" parameterType="map">
+		DELETE FROM fa_eqp_zone_cctv
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

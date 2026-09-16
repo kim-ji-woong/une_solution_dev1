@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="modelOrthoDataMapper">
+
+	<select id="selectModelOrthoDatas" parameterType="map" resultType="egovframework.base.model.gltf.ModelOrthoData">
+		Select * from sdms_gltf_model_ortho_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertModelOrthoData" parameterType="egovframework.base.model.gltf.ModelOrthoData">
+		INSERT INTO sdms_gltf_model_ortho_data (gltf_model_ortho_data_sn, gltf_model_sn, model_file, camera_lc_x, camera_lc_y, camera_lc_z, camera_rtate_x, camera_rtate_y, camera_rtate_z, trgt_x, trgt_y, trgt_z, zoom, zone_sn)
+		VALUES (#{gltf_model_ortho_data_sn}, #{gltf_model_sn}, #{model_file}, #{camera_lc_x}, #{camera_lc_y}, #{camera_lc_z}, #{camera_rtate_x}, #{camera_rtate_y}, #{camera_rtate_z}, #{trgt_x}, #{trgt_y}, #{trgt_z}, #{zoom}, #{zone_sn})
+	</insert>
+
+	<insert id="insertModelOrthoDatas" parameterType="java.util.List">
+		INSERT INTO sdms_gltf_model_ortho_data (gltf_model_ortho_data_sn, gltf_model_sn, model_file, camera_lc_x, camera_lc_y, camera_lc_z, camera_rtate_x, camera_rtate_y, camera_rtate_z, trgt_x, trgt_y, trgt_z, zoom, zone_sn)
+		VALUES
+		<foreach collection="list" item="modelOrthoData" separator=",">
+			(
+				(#{modelOrthoData.gltf_model_ortho_data_sn}, #{modelOrthoData.gltf_model_sn}, #{modelOrthoData.model_file}, #{modelOrthoData.camera_lc_x}, #{modelOrthoData.camera_lc_y}, #{modelOrthoData.camera_lc_z}, #{modelOrthoData.camera_rtate_x}, #{modelOrthoData.camera_rtate_y}, #{modelOrthoData.camera_rtate_z}, #{modelOrthoData.trgt_x}, #{modelOrthoData.trgt_y}, #{modelOrthoData.trgt_z}, #{modelOrthoData.zoom}, #{modelOrthoData.zone_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateModelOrthoData" parameterType="egovframework.base.model.gltf.ModelOrthoData">
+		UPDATE sdms_gltf_model_ortho_data
+		SET gltf_model_sn = #{gltf_model_sn}, model_file = #{model_file}, camera_lc_x = #{camera_lc_x}, camera_lc_y = #{camera_lc_y}, camera_lc_z = #{camera_lc_z}, camera_rtate_x = #{camera_rtate_x}, camera_rtate_y = #{camera_rtate_y}, camera_rtate_z = #{camera_rtate_z}, trgt_x = #{trgt_x}, trgt_y = #{trgt_y}, trgt_z = #{trgt_z}, zoom = #{zoom}, zone_sn = #{zone_sn}
+		<where>
+			gltf_model_ortho_data_sn = #{gltf_model_ortho_data_sn}
+		</where>
+	</update>
+
+	<update id="updateModelOrthoDataByCondition" parameterType="map">
+		UPDATE sdms_gltf_model_ortho_data
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteModelOrthoData" parameterType="egovframework.base.model.gltf.ModelOrthoData">
+		DELETE FROM sdms_gltf_model_ortho_data
+		<where>
+			gltf_model_ortho_data_sn = #{gltf_model_ortho_data_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteModelOrthoDataByCondition" parameterType="map">
+		DELETE FROM sdms_gltf_model_ortho_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="optionMapper">
+
+	<select id="selectOptions" parameterType="map" resultType="egovframework.base.model.account.Option">
+		Select * from acc_optn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertOption" parameterType="egovframework.base.model.account.Option">
+		INSERT INTO acc_optn (user_sn, optn_cl, optn_sclas, optn_indx, optn_value)
+		VALUES (#{user_sn}, #{optn_cl}, #{optn_sclas}, #{optn_indx}, #{optn_value})
+	</insert>
+
+	<insert id="insertOptions" parameterType="java.util.List">
+		INSERT INTO acc_optn (user_sn, optn_cl, optn_sclas, optn_indx, optn_value)
+		VALUES
+		<foreach collection="list" item="option" separator=",">
+			(
+				(#{option.user_sn}, #{option.optn_cl}, #{option.optn_sclas}, #{option.optn_indx}, #{option.optn_value})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateOption" parameterType="egovframework.base.model.account.Option">
+		UPDATE acc_optn
+		SET optn_value = #{optn_value}
+		<where>
+			user_sn = #{user_sn}, optn_cl = #{optn_cl}, optn_sclas = #{optn_sclas}, optn_indx = #{optn_indx}
+		</where>
+	</update>
+
+	<update id="updateOptionByCondition" parameterType="map">
+		UPDATE acc_optn
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteOption" parameterType="egovframework.base.model.account.Option">
+		DELETE FROM acc_optn
+		<where>
+			user_sn = #{user_sn}, optn_cl = #{optn_cl}, optn_sclas = #{optn_sclas}, optn_indx = #{optn_indx}
+		</where>
+	</delete>
+
+	<delete id="deleteOptionByCondition" parameterType="map">
+		DELETE FROM acc_optn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

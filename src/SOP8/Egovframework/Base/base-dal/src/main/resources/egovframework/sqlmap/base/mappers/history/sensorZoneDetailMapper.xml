@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sensorZoneDetailMapper">
+
+	<select id="selectSensorZoneDetails" parameterType="map" resultType="egovframework.base.model.history.SensorZoneDetail">
+		Select * from his_sensor_zone_detail
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSensorZoneDetail" parameterType="egovframework.base.model.history.SensorZoneDetail">
+		INSERT INTO his_sensor_zone_detail (sensor_zone_hist_sn, sensor_zone_sn, tm)
+		VALUES (#{sensor_zone_hist_sn}, #{sensor_zone_sn}, #{tm})
+	</insert>
+
+	<insert id="insertSensorZoneDetails" parameterType="java.util.List">
+		INSERT INTO his_sensor_zone_detail (sensor_zone_hist_sn, sensor_zone_sn, tm)
+		VALUES
+		<foreach collection="list" item="sensorZoneDetail" separator=",">
+			(
+				(#{sensorZoneDetail.sensor_zone_hist_sn}, #{sensorZoneDetail.sensor_zone_sn}, #{sensorZoneDetail.tm})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSensorZoneDetail" parameterType="egovframework.base.model.history.SensorZoneDetail">
+		UPDATE his_sensor_zone_detail
+		SET tm = #{tm}
+		<where>
+			sensor_zone_hist_sn = #{sensor_zone_hist_sn}, sensor_zone_sn = #{sensor_zone_sn}
+		</where>
+	</update>
+
+	<update id="updateSensorZoneDetailByCondition" parameterType="map">
+		UPDATE his_sensor_zone_detail
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSensorZoneDetail" parameterType="egovframework.base.model.history.SensorZoneDetail">
+		DELETE FROM his_sensor_zone_detail
+		<where>
+			sensor_zone_hist_sn = #{sensor_zone_hist_sn}, sensor_zone_sn = #{sensor_zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteSensorZoneDetailByCondition" parameterType="map">
+		DELETE FROM his_sensor_zone_detail
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

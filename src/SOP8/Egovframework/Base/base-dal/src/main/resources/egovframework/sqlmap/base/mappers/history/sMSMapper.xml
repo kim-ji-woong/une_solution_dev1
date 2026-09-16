@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sMSMapper">
+
+	<select id="selectSMSes" parameterType="map" resultType="egovframework.base.model.history.SMS">
+		Select * from his_sms
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSMS" parameterType="egovframework.base.model.history.SMS" useGeneratedKeys="true" keyProperty="sms_hist_sn">
+		INSERT INTO his_sms (sensor_zone_hist_sn, sensor_react_hist_sn, sms_contents, send_ty_optn_code, send_ty_code)
+		VALUES (#{sensor_zone_hist_sn}, #{sensor_react_hist_sn}, #{sms_contents}, #{send_ty_optn_code}, #{send_ty_code})
+	</insert>
+
+	<insert id="insertSMSes" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="sms_hist_sn">
+		INSERT INTO his_sms (sensor_zone_hist_sn, sensor_react_hist_sn, sms_contents, send_ty_optn_code, send_ty_code)
+		VALUES
+		<foreach collection="list" item="sMS" separator=",">
+			(
+				(#{sMS.sensor_zone_hist_sn}, #{sMS.sensor_react_hist_sn}, #{sMS.sms_contents}, #{sMS.send_ty_optn_code}, #{sMS.send_ty_code})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSMS" parameterType="egovframework.base.model.history.SMS">
+		UPDATE his_sms
+		SET sensor_zone_hist_sn = #{sensor_zone_hist_sn}, sensor_react_hist_sn = #{sensor_react_hist_sn}, sms_contents = #{sms_contents}, send_ty_optn_code = #{send_ty_optn_code}, send_ty_code = #{send_ty_code}
+		<where>
+			sms_hist_sn = #{sms_hist_sn}
+		</where>
+	</update>
+
+	<update id="updateSMSByCondition" parameterType="map">
+		UPDATE his_sms
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSMS" parameterType="egovframework.base.model.history.SMS">
+		DELETE FROM his_sms
+		<where>
+			sms_hist_sn = #{sms_hist_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteSMSByCondition" parameterType="map">
+		DELETE FROM his_sms
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="58" viewBox="0 0 58 58">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5398ff"/>
+      <stop offset="1" stop-color="#005fec"/>
+    </linearGradient>
+  </defs>
+  <g id="그룹_14295" data-name="그룹 14295" transform="translate(-591 -987)">
+    <g id="사각형_2645" data-name="사각형 2645" transform="translate(591 987)" stroke="#fff" stroke-width="1" fill="url(#linear-gradient)">
+      <rect width="58" height="58" rx="5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="57" height="57" rx="4.5" fill="none"/>
+    </g>
+    <g id="location_1_" data-name="location (1)" transform="translate(606 1002)">
+      <path id="패스_3224" data-name="패스 3224" d="M183.183,0a4.217,4.217,0,0,0-4.213,4.213,8.762,8.762,0,0,0,3.782,7.314.82.82,0,0,0,.861,0A8.762,8.762,0,0,0,187.4,4.213,4.217,4.217,0,0,0,183.183,0Zm.021,5.086a.82.82,0,1,1,.82-.82A.82.82,0,0,1,183.2,5.086Z" transform="translate(-169.183)" fill="#fff"/>
+      <g id="그룹_973" data-name="그룹 973" transform="translate(17.062 8.094)">
+        <g id="그룹_972" data-name="그룹 972">
+          <path id="패스_3225" data-name="패스 3225" d="M322.591,148.15a.821.821,0,0,0-.746-.1l-9.3,3.281a.821.821,0,0,0-.547.774v3.5h1.313a2.464,2.464,0,0,1,2.461,2.461v9.844h6.344a.821.821,0,0,0,.82-.82V148.82A.821.821,0,0,0,322.591,148.15Zm-3.536,15.818a.82.82,0,1,1-1.641,0v-.984a.82.82,0,0,1,1.641,0Zm0-4.266a.82.82,0,0,1-1.641,0v-.984a.82.82,0,0,1,1.641,0Zm0-4.266a.82.82,0,0,1-1.641,0v-.984a.82.82,0,1,1,1.641,0Z" transform="translate(-312 -148)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="그룹_974" data-name="그룹 974" transform="translate(0 13.508)">
+        <path id="패스_3226" data-name="패스 3226" d="M10.117,247H.82a.821.821,0,0,0-.82.82v12.852a.821.821,0,0,0,.82.82H7.164v-9.844a2.464,2.464,0,0,1,2.461-2.461h1.312V247.82A.821.821,0,0,0,10.117,247Zm-4.594,9.352a.82.82,0,1,1-1.641,0v-.984a.82.82,0,0,1,1.641,0Zm0-4.266a.82.82,0,0,1-1.641,0V251.1a.82.82,0,1,1,1.641,0Z" transform="translate(0 -247)" fill="#fff"/>
+      </g>
+      <path id="패스_3227" data-name="패스 3227" d="M241,417h1.641v5.2H241Z" transform="translate(-227.82 -394.195)" fill="#fff"/>
+      <path id="패스_3228" data-name="패스 3228" d="M171.391,317.82v9.844h-2.734v-6.016a.821.821,0,0,0-.82-.82h-3.281a.821.821,0,0,0-.82.82v6.016H161V317.82a.821.821,0,0,1,.82-.82h8.75A.821.821,0,0,1,171.391,317.82Z" transform="translate(-152.195 -299.664)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

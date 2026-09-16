@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="commonOptionMapper">
+
+	<select id="selectCommonOptions" parameterType="map" resultType="egovframework.base.model.common.CommonOption">
+		Select * from co_sys_optn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertCommonOption" parameterType="egovframework.base.model.common.CommonOption" useGeneratedKeys="true" keyProperty="optn_sn">
+		INSERT INTO co_sys_optn (prop_name, site_sn, prop_value, descp)
+		VALUES (#{prop_name}, #{site_sn}, #{prop_value}, #{descp})
+	</insert>
+
+	<insert id="insertCommonOptions" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="optn_sn">
+		INSERT INTO co_sys_optn (prop_name, site_sn, prop_value, descp)
+		VALUES
+		<foreach collection="list" item="commonOption" separator=",">
+			(
+				(#{commonOption.prop_name}, #{commonOption.site_sn}, #{commonOption.prop_value}, #{commonOption.descp})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateCommonOption" parameterType="egovframework.base.model.common.CommonOption">
+		UPDATE co_sys_optn
+		SET prop_name = #{prop_name}, site_sn = #{site_sn}, prop_value = #{prop_value}, descp = #{descp}
+		<where>
+			optn_sn = #{optn_sn}
+		</where>
+	</update>
+
+	<update id="updateCommonOptionByCondition" parameterType="map">
+		UPDATE co_sys_optn
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteCommonOption" parameterType="egovframework.base.model.common.CommonOption">
+		DELETE FROM co_sys_optn
+		<where>
+			optn_sn = #{optn_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteCommonOptionByCondition" parameterType="map">
+		DELETE FROM co_sys_optn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

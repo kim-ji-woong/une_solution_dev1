@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\SOPSimulator\Base.SOPSimulator.BLL\Base.SOPSimulator.BLL.csproj" />
+    <ProjectReference Include="..\..\SOPSimulator\Base.SOPSimulator.IBLL\Base.SOPSimulator.IBLL.csproj" />
+    <ProjectReference Include="..\SOPWebServer.Agent.BLL\SOPWebServer.Agent.BLL.csproj" />
+    <ProjectReference Include="..\SOPWebServer.Controller\SOPWebServer.Controller.csproj" />
+  </ItemGroup>
+
+</Project>

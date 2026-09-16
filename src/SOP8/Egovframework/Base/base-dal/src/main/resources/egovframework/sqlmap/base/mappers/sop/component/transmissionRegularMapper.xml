@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="transmissionRegularMapper">
+
+	<select id="selectTransmissionRegulars" parameterType="map" resultType="egovframework.base.model.sop.component.TransmissionRegular">
+		Select * from so_compn_trnsmis_rgl
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertTransmissionRegular" parameterType="egovframework.base.model.sop.component.TransmissionRegular">
+		INSERT INTO so_compn_trnsmis_rgl (compn_sn, rgl_sn)
+		VALUES (#{compn_sn}, #{rgl_sn})
+	</insert>
+
+	<insert id="insertTransmissionRegulars" parameterType="java.util.List">
+		INSERT INTO so_compn_trnsmis_rgl (compn_sn, rgl_sn)
+		VALUES
+		<foreach collection="list" item="transmissionRegular" separator=",">
+			(
+				(#{transmissionRegular.compn_sn}, #{transmissionRegular.rgl_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateTransmissionRegularByCondition" parameterType="map">
+		UPDATE so_compn_trnsmis_rgl
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteTransmissionRegular" parameterType="egovframework.base.model.sop.component.TransmissionRegular">
+		DELETE FROM so_compn_trnsmis_rgl
+		<where>
+			compn_sn = #{compn_sn}, rgl_sn = #{rgl_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteTransmissionRegularByCondition" parameterType="map">
+		DELETE FROM so_compn_trnsmis_rgl
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

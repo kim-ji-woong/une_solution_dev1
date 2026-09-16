@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="materialLimitDataMapper">
+
+	<select id="selectMaterialLimitDatas" parameterType="map" resultType="egovframework.base.model.sensor.MaterialLimitData">
+		Select * from fa_sensor_material_lim_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertMaterialLimitData" parameterType="egovframework.base.model.sensor.MaterialLimitData">
+		INSERT INTO fa_sensor_material_lim_data (sensor_zone_sn, lim_indx, usab, value)
+		VALUES (#{sensor_zone_sn}, #{lim_indx}, #{usab}, #{value})
+	</insert>
+
+	<insert id="insertMaterialLimitDatas" parameterType="java.util.List">
+		INSERT INTO fa_sensor_material_lim_data (sensor_zone_sn, lim_indx, usab, value)
+		VALUES
+		<foreach collection="list" item="materialLimitData" separator=",">
+			(
+				(#{materialLimitData.sensor_zone_sn}, #{materialLimitData.lim_indx}, #{materialLimitData.usab}, #{materialLimitData.value})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateMaterialLimitData" parameterType="egovframework.base.model.sensor.MaterialLimitData">
+		UPDATE fa_sensor_material_lim_data
+		SET usab = #{usab}, value = #{value}
+		<where>
+			sensor_zone_sn = #{sensor_zone_sn}, lim_indx = #{lim_indx}
+		</where>
+	</update>
+
+	<update id="updateMaterialLimitDataByCondition" parameterType="map">
+		UPDATE fa_sensor_material_lim_data
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteMaterialLimitData" parameterType="egovframework.base.model.sensor.MaterialLimitData">
+		DELETE FROM fa_sensor_material_lim_data
+		<where>
+			sensor_zone_sn = #{sensor_zone_sn}, lim_indx = #{lim_indx}
+		</where>
+	</delete>
+
+	<delete id="deleteMaterialLimitDataByCondition" parameterType="map">
+		DELETE FROM fa_sensor_material_lim_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

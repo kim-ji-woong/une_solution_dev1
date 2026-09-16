@@ -1,0 +1,111 @@
+﻿
+
+.sensorPopBox { display:block; position:absolute; left: 50%; top: 50%; transform:translate(-50%, -50%); }
+.sensorBoxTitle{ /* padding: 8px 10px; */ position: relative; border-radius: 4px 4px 0px 0px; /* background-color: rgba(29,41,48,1); */  }
+.sensorBoxTitle .sensorText{ display:block; font-size: 24px; color: #00A2BF; font-weight: 600; }
+
+.titleArea{ display:flex; place-content: flex-end;  margin-bottom: 10px; }
+.titleArea .titleText{ display: inline-flex; color: #fff; line-height: 32px; margin-right: 10px; }
+
+.sensorSelect{  display: block; width: 150px; border: solid 1px #848fa39e; height: 32px; padding-left: 10px; padding-right: 30px;
+                color: #fff; background: #182230 url('../../Common/img/common/select_arrow_white.png')no-repeat;  background-position: center; background-position-x: 126px;
+                font-size: 14px; font-weight: 300; cursor: pointer; border-radius: 4px; cursor: pointer; }
+
+.sensorTableArea{ display: flex; margin-bottom: 10px; }
+.alarmTable{ display:block; width: 600px; height:300px; color: #ffffff; border:solid 1px #b0a2a27a; border-radius: 6px; background: rgba(0,0,0,0.2); margin-right:10px; overflow-y: scroll; }
+.alarmTable tr{ display:table; width: 100%; line-height: 30px; font-weight: 100; font-size: 12px; }
+.alarmTable tr:hover{ background-color: #d7d7d72b; }
+.alarmTable th{ height:16px; font-size: 14px; padding: 5px; text-align: center; color: #fff; background: rgba(0,0,0,0.5); font-weight: normal; }
+.alarmTable td{ display: inline-block; text-align:center; cursor:pointer; }
+.alarmScrollArea{ overflow-y: scroll; } 
+
+
+/* .sensorTable tr{ display:table; width: 100%; line-height: 30px; font-weight: 100; font-size: 12px; }
+.sensorTable tr:hover{ background-color: #d7d7d72b;  }
+.sensorTable th{ height:16px; font-size: 14px; padding: 5px; text-align: center; color: #fff; background: rgba(0,0,0,0.5); font-weight: normal; }
+.sensorTable td{  display: inline-block; text-align:center; cursor:pointer; }  */
+
+
+.alarmBox{ display: flex; flex-direction: row-reverse; margin: 10px; }
+.alarmBox2{ display: flex; flex-direction: row-reverse; margin: 10px 0px; }
+.alarmBox2 .alarmOpen{ display: inline-block; margin-right: 2px; /* width: 100px; */ text-align:center; margin-left: 10px; }
+.alarmBox2 .alarmOpen a{ display: block; color: #00A2BF; font-size: 14px; height: 32px; line-height: 30px;
+                        border: solid 1px #00A2BF; padding: 0 15px; border-radius: 4px; cursor: pointer; }   
+.alarmBox2 .alarmOpen a:hover{ display: block; color: #fff; background:#00A2BF;  }
+
+
+.alarmBox .alarmClose{ display: inline-block; margin-right: 10px; /* width: 100px; */ text-align:center; margin-left: 10px; }
+.alarmBox .alarmClose a{ display: block; color: #00A2BF; font-size: 14px; height: 32px; line-height: 30px;
+                          border: solid 1px #00A2BF; padding: 0 15px; border-radius: 4px; cursor: pointer; }   
+.alarmBox .alarmClose a:hover{ display: block; color: #fff; background:#00A2BF;  }
+
+
+.alarmBox .alarmClose2{ display: inline-block; margin-right: 2px; /* width: 100px; */ text-align:center;  }
+.alarmBox .alarmClose2 a{ display: block; color: #00A2BF; font-size: 14px; height: 32px; line-height: 30px;
+                          border: solid 1px #00A2BF; padding: 0 15px; border-radius: 4px; cursor: pointer; }  
+.alarmBox .alarmClose2 a:hover{ display: block; color: #fff; background:#00A2BF;  }
+
+
+/* 0103 */
+.sensorTable{ display: block; width: 540px; height:300px; color: #ffffff; border:solid 1px #b0a2a27a; border-radius: 6px; background: rgba(0,0,0,0.2); }
+.sensorTable .sensorList{ display:block; height:40px; line-height: 30px; font-size: 14px; padding: 5px; color: #fff; background: rgba(0,0,0,0.5); font-weight: normal;  padding-left: 14px; }
+.sensorTreeArea{ overflow-y: scroll; height: 260px; }
+
+.sensorTable input[type="checkbox"] { display: none; }
+.sensorTable input[type="checkbox"]:checked ~ ul { display: none; }
+
+.sensorTable .firstTab{ margin-left: 10px; margin-top: 14px;  }
+.sensorTable .secondTab{  margin-left: 12px; }
+.sensorTable .thirdTab{  margin-left: 14px; }
+.sensorTable .fourthTab{  margin-left: 16px; }
+.sensorTable .fiftyTab{  margin-left: 18px; }
+
+ 
+.sensorTable *:before {
+    width: 17px;
+    height: 20px;
+    display: inline-block;
+}
+
+/* 해당 영역을 닫을경우, 혹은 닫혀있는경우 사용할 이미지를 지정한다. */
+/* .sensorTable input[type="checkbox"]:checked + label:before {
+    content: '▶';
+} */
+
+/* 해당 영역을 오픈 하였을때 변경할 이미지를 지정한다. */
+/* .sensorTable label:before {
+    content: '▶';
+} */ 
+
+.sensorTable .firstTab label:before {
+    content: '▶';
+}
+
+.sensorTable .secondTab label:before {
+    content: '▶';
+}
+
+.sensorTable .thirdTab label:before {
+    content: '▶';
+}
+
+.sensorTable .fourthTab label:before {
+    content: '▶';
+}
+
+.sensorTable .fiftyTab label:before {
+    content: 'ㆍ';
+}
+
+.sensorName { font-size:12px; }
+.sensorName label { cursor: pointer; }
+.selected > label { color: #fff000; }
+.selectedArea { background-color: #d7d7d76b; }
+
+.sensorFlex{ }
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="stepMemberMapper">
+
+	<select id="selectStepMembers" parameterType="map" resultType="egovframework.base.model.sop.component.StepMember">
+		Select * from so_compn_step_memb
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertStepMember" parameterType="egovframework.base.model.sop.component.StepMember" useGeneratedKeys="true" keyProperty="step_memb_sn">
+		INSERT INTO so_compn_step_memb (action_step_sn)
+		VALUES (#{action_step_sn})
+	</insert>
+
+	<insert id="insertStepMembers" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="step_memb_sn">
+		INSERT INTO so_compn_step_memb (action_step_sn)
+		VALUES
+		<foreach collection="list" item="stepMember" separator=",">
+			(
+				(#{stepMember.action_step_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateStepMember" parameterType="egovframework.base.model.sop.component.StepMember">
+		UPDATE so_compn_step_memb
+		SET action_step_sn = #{action_step_sn}
+		<where>
+			step_memb_sn = #{step_memb_sn}
+		</where>
+	</update>
+
+	<update id="updateStepMemberByCondition" parameterType="map">
+		UPDATE so_compn_step_memb
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteStepMember" parameterType="egovframework.base.model.sop.component.StepMember">
+		DELETE FROM so_compn_step_memb
+		<where>
+			step_memb_sn = #{step_memb_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteStepMemberByCondition" parameterType="map">
+		DELETE FROM so_compn_step_memb
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

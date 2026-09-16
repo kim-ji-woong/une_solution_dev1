@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="transmissionTemporaryMapper">
+
+	<select id="selectTransmissionTemporaries" parameterType="map" resultType="egovframework.base.model.sop.component.TransmissionTemporary">
+		Select * from so_compn_trnsmis_tmpr
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertTransmissionTemporary" parameterType="egovframework.base.model.sop.component.TransmissionTemporary">
+		INSERT INTO so_compn_trnsmis_tmpr (compn_sn, tmpr_sn)
+		VALUES (#{compn_sn}, #{tmpr_sn})
+	</insert>
+
+	<insert id="insertTransmissionTemporaries" parameterType="java.util.List">
+		INSERT INTO so_compn_trnsmis_tmpr (compn_sn, tmpr_sn)
+		VALUES
+		<foreach collection="list" item="transmissionTemporary" separator=",">
+			(
+				(#{transmissionTemporary.compn_sn}, #{transmissionTemporary.tmpr_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateTransmissionTemporaryByCondition" parameterType="map">
+		UPDATE so_compn_trnsmis_tmpr
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteTransmissionTemporary" parameterType="egovframework.base.model.sop.component.TransmissionTemporary">
+		DELETE FROM so_compn_trnsmis_tmpr
+		<where>
+			compn_sn = #{compn_sn}, tmpr_sn = #{tmpr_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteTransmissionTemporaryByCondition" parameterType="map">
+		DELETE FROM so_compn_trnsmis_tmpr
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

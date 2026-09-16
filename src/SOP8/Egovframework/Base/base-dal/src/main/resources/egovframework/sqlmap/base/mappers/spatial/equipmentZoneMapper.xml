@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="equipmentZoneMapper">
+
+	<select id="selectEquipmentZones" parameterType="map" resultType="egovframework.base.model.spatial.EquipmentZone">
+		Select * from sp_eqp_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertEquipmentZone" parameterType="egovframework.base.model.spatial.EquipmentZone">
+		INSERT INTO sp_eqp_zone (eqp_zone_sn, name, text_center_crdnt_x, text_center_crdnt_y, text_center_crdnt_z, brdcst_text, disp_text, site_sn)
+		VALUES (#{eqp_zone_sn}, #{name}, #{text_center_crdnt_x}, #{text_center_crdnt_y}, #{text_center_crdnt_z}, #{brdcst_text}, #{disp_text}, #{site_sn})
+	</insert>
+
+	<insert id="insertEquipmentZones" parameterType="java.util.List">
+		INSERT INTO sp_eqp_zone (eqp_zone_sn, name, text_center_crdnt_x, text_center_crdnt_y, text_center_crdnt_z, brdcst_text, disp_text, site_sn)
+		VALUES
+		<foreach collection="list" item="equipmentZone" separator=",">
+			(
+				(#{equipmentZone.eqp_zone_sn}, #{equipmentZone.name}, #{equipmentZone.text_center_crdnt_x}, #{equipmentZone.text_center_crdnt_y}, #{equipmentZone.text_center_crdnt_z}, #{equipmentZone.brdcst_text}, #{equipmentZone.disp_text}, #{equipmentZone.site_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateEquipmentZone" parameterType="egovframework.base.model.spatial.EquipmentZone">
+		UPDATE sp_eqp_zone
+		SET name = #{name}, text_center_crdnt_x = #{text_center_crdnt_x}, text_center_crdnt_y = #{text_center_crdnt_y}, text_center_crdnt_z = #{text_center_crdnt_z}, brdcst_text = #{brdcst_text}, disp_text = #{disp_text}, site_sn = #{site_sn}
+		<where>
+			eqp_zone_sn = #{eqp_zone_sn}
+		</where>
+	</update>
+
+	<update id="updateEquipmentZoneByCondition" parameterType="map">
+		UPDATE sp_eqp_zone
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteEquipmentZone" parameterType="egovframework.base.model.spatial.EquipmentZone">
+		DELETE FROM sp_eqp_zone
+		<where>
+			eqp_zone_sn = #{eqp_zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteEquipmentZoneByCondition" parameterType="map">
+		DELETE FROM sp_eqp_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

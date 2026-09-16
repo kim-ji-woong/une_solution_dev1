@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="regularMapper">
+
+	<select id="selectRegulars" parameterType="map" resultType="egovframework.base.model.common.team.Regular">
+		Select * from co_team_rgl
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertRegular" parameterType="egovframework.base.model.common.team.Regular" useGeneratedKeys="true" keyProperty="rgl_sn">
+		INSERT INTO co_team_rgl (team_name, parnts_sn, site_sn)
+		VALUES (#{team_name}, #{parnts_sn}, #{site_sn})
+	</insert>
+
+	<insert id="insertRegulars" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="rgl_sn">
+		INSERT INTO co_team_rgl (team_name, parnts_sn, site_sn)
+		VALUES
+		<foreach collection="list" item="regular" separator=",">
+			(
+				(#{regular.team_name}, #{regular.parnts_sn}, #{regular.site_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateRegular" parameterType="egovframework.base.model.common.team.Regular">
+		UPDATE co_team_rgl
+		SET team_name = #{team_name}, parnts_sn = #{parnts_sn}, site_sn = #{site_sn}
+		<where>
+			rgl_sn = #{rgl_sn}
+		</where>
+	</update>
+
+	<update id="updateRegularByCondition" parameterType="map">
+		UPDATE co_team_rgl
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteRegular" parameterType="egovframework.base.model.common.team.Regular">
+		DELETE FROM co_team_rgl
+		<where>
+			rgl_sn = #{rgl_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteRegularByCondition" parameterType="map">
+		DELETE FROM co_team_rgl
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

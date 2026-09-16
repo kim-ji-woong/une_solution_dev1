@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\SOPWebServer\SOPWebServer.IBLL\Models\Request\Header.cs" Link="SOPWebServer\Header.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+    <ProjectReference Include="..\..\..\Utility\Response\Response.csproj" />
+    <ProjectReference Include="..\Base.SensorSimulator.IBLL\Base.SensorSimulator.IBLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SOPWebServer\" />
+  </ItemGroup>
+
+</Project>

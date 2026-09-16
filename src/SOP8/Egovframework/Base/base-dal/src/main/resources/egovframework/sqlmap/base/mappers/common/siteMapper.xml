@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="siteMapper">
+
+	<select id="selectSites" parameterType="map" resultType="egovframework.base.model.common.Site">
+		Select * from co_site
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSite" parameterType="egovframework.base.model.common.Site">
+		INSERT INTO co_site (site_sn, site_name)
+		VALUES (#{site_sn}, #{site_name})
+	</insert>
+
+	<insert id="insertSites" parameterType="java.util.List">
+		INSERT INTO co_site (site_sn, site_name)
+		VALUES
+		<foreach collection="list" item="site" separator=",">
+			(
+				(#{site.site_sn}, #{site.site_name})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSite" parameterType="egovframework.base.model.common.Site">
+		UPDATE co_site
+		SET site_name = #{site_name}
+		<where>
+			site_sn = #{site_sn}
+		</where>
+	</update>
+
+	<update id="updateSiteByCondition" parameterType="map">
+		UPDATE co_site
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSite" parameterType="egovframework.base.model.common.Site">
+		DELETE FROM co_site
+		<where>
+			site_sn = #{site_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteSiteByCondition" parameterType="map">
+		DELETE FROM co_site
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

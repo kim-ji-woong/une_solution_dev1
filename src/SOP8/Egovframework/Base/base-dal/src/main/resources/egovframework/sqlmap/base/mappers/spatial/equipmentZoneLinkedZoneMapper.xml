@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="equipmentZoneLinkedZoneMapper">
+
+	<select id="selectEquipmentZoneLinkedZones" parameterType="map" resultType="egovframework.base.model.spatial.EquipmentZoneLinkedZone">
+		Select * from sp_eqp_zone_link_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertEquipmentZoneLinkedZone" parameterType="egovframework.base.model.spatial.EquipmentZoneLinkedZone">
+		INSERT INTO sp_eqp_zone_link_zone (eqp_zone_sn, zone_sn)
+		VALUES (#{eqp_zone_sn}, #{zone_sn})
+	</insert>
+
+	<insert id="insertEquipmentZoneLinkedZones" parameterType="java.util.List">
+		INSERT INTO sp_eqp_zone_link_zone (eqp_zone_sn, zone_sn)
+		VALUES
+		<foreach collection="list" item="equipmentZoneLinkedZone" separator=",">
+			(
+				(#{equipmentZoneLinkedZone.eqp_zone_sn}, #{equipmentZoneLinkedZone.zone_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateEquipmentZoneLinkedZoneByCondition" parameterType="map">
+		UPDATE sp_eqp_zone_link_zone
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteEquipmentZoneLinkedZone" parameterType="egovframework.base.model.spatial.EquipmentZoneLinkedZone">
+		DELETE FROM sp_eqp_zone_link_zone
+		<where>
+			eqp_zone_sn = #{eqp_zone_sn}, zone_sn = #{zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteEquipmentZoneLinkedZoneByCondition" parameterType="map">
+		DELETE FROM sp_eqp_zone_link_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

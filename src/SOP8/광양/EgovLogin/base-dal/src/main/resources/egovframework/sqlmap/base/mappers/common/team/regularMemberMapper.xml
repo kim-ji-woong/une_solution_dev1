@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="regularMemberMapper">
+
+	<select id="selectRegularMembers" parameterType="map" resultType="egovframework.base.model.common.team.RegularMember">
+		Select * from co_team_rgl_memb
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertRegularMember" parameterType="egovframework.base.model.common.team.RegularMember" useGeneratedKeys="true" keyProperty="rgl_memb_sn">
+		INSERT INTO co_team_rgl_memb (rgl_sn, memb_name, unq_key, offm_telno, telno, email, clsf_optn_no, clsf_no, ofcps_optn_no, ofcps_no, dty_sttus_optn_no, dty_sttus_no, memo)
+		VALUES (#{rgl_sn}, #{memb_name}, #{unq_key}, #{offm_telno}, #{telno}, #{email}, #{clsf_optn_no}, #{clsf_no}, #{ofcps_optn_no}, #{ofcps_no}, #{dty_sttus_optn_no}, #{dty_sttus_no}, #{memo})
+	</insert>
+
+	<insert id="insertRegularMembers" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="rgl_memb_sn">
+		INSERT INTO co_team_rgl_memb (rgl_sn, memb_name, unq_key, offm_telno, telno, email, clsf_optn_no, clsf_no, ofcps_optn_no, ofcps_no, dty_sttus_optn_no, dty_sttus_no, memo)
+		VALUES
+		<foreach collection="list" item="regularMember" separator=",">
+			(
+				(#{regularMember.rgl_sn}, #{regularMember.memb_name}, #{regularMember.unq_key}, #{regularMember.offm_telno}, #{regularMember.telno}, #{regularMember.email}, #{regularMember.clsf_optn_no}, #{regularMember.clsf_no}, #{regularMember.ofcps_optn_no}, #{regularMember.ofcps_no}, #{regularMember.dty_sttus_optn_no}, #{regularMember.dty_sttus_no}, #{regularMember.memo})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateRegularMember" parameterType="egovframework.base.model.common.team.RegularMember">
+		UPDATE co_team_rgl_memb
+		SET rgl_sn = #{rgl_sn}, memb_name = #{memb_name}, unq_key = #{unq_key}, offm_telno = #{offm_telno}, telno = #{telno}, email = #{email}, clsf_optn_no = #{clsf_optn_no}, clsf_no = #{clsf_no}, ofcps_optn_no = #{ofcps_optn_no}, ofcps_no = #{ofcps_no}, dty_sttus_optn_no = #{dty_sttus_optn_no}, dty_sttus_no = #{dty_sttus_no}, memo = #{memo}
+		<where>
+			rgl_memb_sn = #{rgl_memb_sn}
+		</where>
+	</update>
+
+	<update id="updateRegularMemberByCondition" parameterType="map">
+		UPDATE co_team_rgl_memb
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteRegularMember" parameterType="egovframework.base.model.common.team.RegularMember">
+		DELETE FROM co_team_rgl_memb
+		<where>
+			rgl_memb_sn = #{rgl_memb_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteRegularMemberByCondition" parameterType="map">
+		DELETE FROM co_team_rgl_memb
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

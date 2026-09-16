@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="materialRangeLimitDataMapper">
+
+	<select id="selectMaterialRangeLimitDatas" parameterType="map" resultType="egovframework.base.model.sensor.MaterialRangeLimitData">
+		Select * from fa_sensor_material_range_lim_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertMaterialRangeLimitData" parameterType="egovframework.base.model.sensor.MaterialRangeLimitData">
+		INSERT INTO fa_sensor_material_range_lim_data (sensor_zone_sn, lim_indx, range_indx, usab, min, max)
+		VALUES (#{sensor_zone_sn}, #{lim_indx}, #{range_indx}, #{usab}, #{min}, #{max})
+	</insert>
+
+	<insert id="insertMaterialRangeLimitDatas" parameterType="java.util.List">
+		INSERT INTO fa_sensor_material_range_lim_data (sensor_zone_sn, lim_indx, range_indx, usab, min, max)
+		VALUES
+		<foreach collection="list" item="materialRangeLimitData" separator=",">
+			(
+				(#{materialRangeLimitData.sensor_zone_sn}, #{materialRangeLimitData.lim_indx}, #{materialRangeLimitData.range_indx}, #{materialRangeLimitData.usab}, #{materialRangeLimitData.min}, #{materialRangeLimitData.max})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateMaterialRangeLimitData" parameterType="egovframework.base.model.sensor.MaterialRangeLimitData">
+		UPDATE fa_sensor_material_range_lim_data
+		SET usab = #{usab}, min = #{min}, max = #{max}
+		<where>
+			sensor_zone_sn = #{sensor_zone_sn}, lim_indx = #{lim_indx}, range_indx = #{range_indx}
+		</where>
+	</update>
+
+	<update id="updateMaterialRangeLimitDataByCondition" parameterType="map">
+		UPDATE fa_sensor_material_range_lim_data
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteMaterialRangeLimitData" parameterType="egovframework.base.model.sensor.MaterialRangeLimitData">
+		DELETE FROM fa_sensor_material_range_lim_data
+		<where>
+			sensor_zone_sn = #{sensor_zone_sn}, lim_indx = #{lim_indx}, range_indx = #{range_indx}
+		</where>
+	</delete>
+
+	<delete id="deleteMaterialRangeLimitDataByCondition" parameterType="map">
+		DELETE FROM fa_sensor_material_range_lim_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

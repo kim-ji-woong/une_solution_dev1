@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sopCategoryActionStepMapper">
+
+	<select id="selectSopCategoryActionSteps" parameterType="map" resultType="egovframework.base.model.sop.category.SopCategoryActionStep">
+		Select * from so_ctgry_action_step
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSopCategoryActionStep" parameterType="egovframework.base.model.sop.category.SopCategoryActionStep" useGeneratedKeys="true" keyProperty="action_step_sn">
+		INSERT INTO so_ctgry_action_step (action_step_name, sclas_sn)
+		VALUES (#{action_step_name}, #{sclas_sn})
+	</insert>
+
+	<insert id="insertSopCategoryActionSteps" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="action_step_sn">
+		INSERT INTO so_ctgry_action_step (action_step_name, sclas_sn)
+		VALUES
+		<foreach collection="list" item="sopCategoryActionStep" separator=",">
+			(
+				(#{sopCategoryActionStep.action_step_name}, #{sopCategoryActionStep.sclas_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSopCategoryActionStep" parameterType="egovframework.base.model.sop.category.SopCategoryActionStep">
+		UPDATE so_ctgry_action_step
+		SET action_step_name = #{action_step_name}, sclas_sn = #{sclas_sn}
+		<where>
+			action_step_sn = #{action_step_sn}
+		</where>
+	</update>
+
+	<update id="updateSopCategoryActionStepByCondition" parameterType="map">
+		UPDATE so_ctgry_action_step
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSopCategoryActionStep" parameterType="egovframework.base.model.sop.category.SopCategoryActionStep">
+		DELETE FROM so_ctgry_action_step
+		<where>
+			action_step_sn = #{action_step_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteSopCategoryActionStepByCondition" parameterType="map">
+		DELETE FROM so_ctgry_action_step
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

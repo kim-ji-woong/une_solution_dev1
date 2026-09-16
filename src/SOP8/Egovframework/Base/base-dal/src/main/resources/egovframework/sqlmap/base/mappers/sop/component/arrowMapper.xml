@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="arrowMapper">
+
+	<select id="selectArrows" parameterType="map" resultType="egovframework.base.model.sop.component.Arrow">
+		Select * from so_compn_arrow
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertArrow" parameterType="egovframework.base.model.sop.component.Arrow" useGeneratedKeys="true" keyProperty="arrw_sn">
+		INSERT INTO so_compn_arrow (contents, lc_optn_code, begin_compn_sn, begin_arrw_lc_code, end_compn_sn, end_arrw_lc_code, step_memb_sn)
+		VALUES (#{contents}, #{lc_optn_code}, #{begin_compn_sn}, #{begin_arrw_lc_code}, #{end_compn_sn}, #{end_arrw_lc_code}, #{step_memb_sn})
+	</insert>
+
+	<insert id="insertArrows" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="arrw_sn">
+		INSERT INTO so_compn_arrow (contents, lc_optn_code, begin_compn_sn, begin_arrw_lc_code, end_compn_sn, end_arrw_lc_code, step_memb_sn)
+		VALUES
+		<foreach collection="list" item="arrow" separator=",">
+			(
+				(#{arrow.contents}, #{arrow.lc_optn_code}, #{arrow.begin_compn_sn}, #{arrow.begin_arrw_lc_code}, #{arrow.end_compn_sn}, #{arrow.end_arrw_lc_code}, #{arrow.step_memb_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateArrow" parameterType="egovframework.base.model.sop.component.Arrow">
+		UPDATE so_compn_arrow
+		SET contents = #{contents}, lc_optn_code = #{lc_optn_code}, begin_compn_sn = #{begin_compn_sn}, begin_arrw_lc_code = #{begin_arrw_lc_code}, end_compn_sn = #{end_compn_sn}, end_arrw_lc_code = #{end_arrw_lc_code}, step_memb_sn = #{step_memb_sn}
+		<where>
+			arrw_sn = #{arrw_sn}
+		</where>
+	</update>
+
+	<update id="updateArrowByCondition" parameterType="map">
+		UPDATE so_compn_arrow
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteArrow" parameterType="egovframework.base.model.sop.component.Arrow">
+		DELETE FROM so_compn_arrow
+		<where>
+			arrw_sn = #{arrw_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteArrowByCondition" parameterType="map">
+		DELETE FROM so_compn_arrow
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

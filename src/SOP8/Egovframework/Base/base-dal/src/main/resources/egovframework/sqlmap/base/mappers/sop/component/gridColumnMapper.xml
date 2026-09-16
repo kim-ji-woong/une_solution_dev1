@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gridColumnMapper">
+
+	<select id="selectGridColumns" parameterType="map" resultType="egovframework.base.model.sop.component.GridColumn">
+		Select * from so_compn_grid_column
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertGridColumn" parameterType="egovframework.base.model.sop.component.GridColumn">
+		INSERT INTO so_compn_grid_column (grid_sn, column_no, width)
+		VALUES (#{grid_sn}, #{column_no}, #{width})
+	</insert>
+
+	<insert id="insertGridColumns" parameterType="java.util.List">
+		INSERT INTO so_compn_grid_column (grid_sn, column_no, width)
+		VALUES
+		<foreach collection="list" item="gridColumn" separator=",">
+			(
+				(#{gridColumn.grid_sn}, #{gridColumn.column_no}, #{gridColumn.width})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateGridColumn" parameterType="egovframework.base.model.sop.component.GridColumn">
+		UPDATE so_compn_grid_column
+		SET width = #{width}
+		<where>
+			grid_sn = #{grid_sn}, column_no = #{column_no}
+		</where>
+	</update>
+
+	<update id="updateGridColumnByCondition" parameterType="map">
+		UPDATE so_compn_grid_column
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteGridColumn" parameterType="egovframework.base.model.sop.component.GridColumn">
+		DELETE FROM so_compn_grid_column
+		<where>
+			grid_sn = #{grid_sn}, column_no = #{column_no}
+		</where>
+	</delete>
+
+	<delete id="deleteGridColumnByCondition" parameterType="map">
+		DELETE FROM so_compn_grid_column
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

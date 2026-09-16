@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="actionStepMapper">
+
+	<select id="selectActionSteps" parameterType="map" resultType="egovframework.base.model.history.ActionStep">
+		Select * from his_action_step
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertActionStep" parameterType="egovframework.base.model.history.ActionStep" useGeneratedKeys="true" keyProperty="action_step_hist_sn">
+		INSERT INTO his_action_step (action_step_sn, begin_time, end_time, last_acces_time, detct_end_time, detct_time, lc, user_sn, sop_optn, sensor_zone_hist_sn, descp)
+		VALUES (#{action_step_sn}, #{begin_time}, #{end_time}, #{last_acces_time}, #{detct_end_time}, #{detct_time}, #{lc}, #{user_sn}, #{sop_optn}, #{sensor_zone_hist_sn}, #{descp})
+	</insert>
+
+	<insert id="insertActionSteps" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="action_step_hist_sn">
+		INSERT INTO his_action_step (action_step_sn, begin_time, end_time, last_acces_time, detct_end_time, detct_time, lc, user_sn, sop_optn, sensor_zone_hist_sn, descp)
+		VALUES
+		<foreach collection="list" item="actionStep" separator=",">
+			(
+				(#{actionStep.action_step_sn}, #{actionStep.begin_time}, #{actionStep.end_time}, #{actionStep.last_acces_time}, #{actionStep.detct_end_time}, #{actionStep.detct_time}, #{actionStep.lc}, #{actionStep.user_sn}, #{actionStep.sop_optn}, #{actionStep.sensor_zone_hist_sn}, #{actionStep.descp})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateActionStep" parameterType="egovframework.base.model.history.ActionStep">
+		UPDATE his_action_step
+		SET action_step_sn = #{action_step_sn}, begin_time = #{begin_time}, end_time = #{end_time}, last_acces_time = #{last_acces_time}, detct_end_time = #{detct_end_time}, detct_time = #{detct_time}, lc = #{lc}, user_sn = #{user_sn}, sop_optn = #{sop_optn}, sensor_zone_hist_sn = #{sensor_zone_hist_sn}, descp = #{descp}
+		<where>
+			action_step_hist_sn = #{action_step_hist_sn}
+		</where>
+	</update>
+
+	<update id="updateActionStepByCondition" parameterType="map">
+		UPDATE his_action_step
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteActionStep" parameterType="egovframework.base.model.history.ActionStep">
+		DELETE FROM his_action_step
+		<where>
+			action_step_hist_sn = #{action_step_hist_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteActionStepByCondition" parameterType="map">
+		DELETE FROM his_action_step
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

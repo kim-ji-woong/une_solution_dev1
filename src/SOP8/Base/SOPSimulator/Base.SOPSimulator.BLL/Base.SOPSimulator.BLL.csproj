@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsEmail\dnsEmail\dnsEmail.csproj" />
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsSMS\dnsSMS\dnsSMS.csproj" />
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+    <ProjectReference Include="..\..\Base.DAL\Base.DAL.csproj" />
+    <ProjectReference Include="..\Base.SOPSimulator.IBLL\Base.SOPSimulator.IBLL.csproj" />
+  </ItemGroup>
+
+</Project>

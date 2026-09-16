@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\Base\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\Base\History\Base.History.IBLL\Base.History.IBLL.csproj" />
+    <ProjectReference Include="..\..\Base\SDMS\Base.SDMS.IBLL\Base.SDMS.IBLL.csproj" />
+    <ProjectReference Include="..\..\Utility\dnsExcelReport\dnsExcelReport.csproj" />
+    <ProjectReference Include="..\..\Utility\Response\Response.csproj" />
+    <ProjectReference Include="..\dnsDataSoulbrain\dnsDataSoulbrain.csproj" />
+    <ProjectReference Include="..\Soulbrain.DAL\Soulbrain.DAL.csproj" />
+    <ProjectReference Include="..\Soulbrain.Model\Soulbrain.Model.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="decisionMapper">
+
+	<select id="selectDecisions" parameterType="map" resultType="egovframework.base.model.sop.component.Decision">
+		Select * from so_compn_dcs
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertDecision" parameterType="egovframework.base.model.sop.component.Decision">
+		INSERT INTO so_compn_dcs (compn_sn, title, descp, atmc_execut_script, execut_no)
+		VALUES (#{compn_sn}, #{title}, #{descp}, #{atmc_execut_script}, #{execut_no})
+	</insert>
+
+	<insert id="insertDecisions" parameterType="java.util.List">
+		INSERT INTO so_compn_dcs (compn_sn, title, descp, atmc_execut_script, execut_no)
+		VALUES
+		<foreach collection="list" item="decision" separator=",">
+			(
+				(#{decision.compn_sn}, #{decision.title}, #{decision.descp}, #{decision.atmc_execut_script}, #{decision.execut_no})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateDecision" parameterType="egovframework.base.model.sop.component.Decision">
+		UPDATE so_compn_dcs
+		SET title = #{title}, descp = #{descp}, atmc_execut_script = #{atmc_execut_script}, execut_no = #{execut_no}
+		<where>
+			compn_sn = #{compn_sn}
+		</where>
+	</update>
+
+	<update id="updateDecisionByCondition" parameterType="map">
+		UPDATE so_compn_dcs
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteDecision" parameterType="egovframework.base.model.sop.component.Decision">
+		DELETE FROM so_compn_dcs
+		<where>
+			compn_sn = #{compn_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteDecisionByCondition" parameterType="map">
+		DELETE FROM so_compn_dcs
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

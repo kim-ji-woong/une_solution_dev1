@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notificationMessageMapper">
+
+	<select id="selectNotificationMessages" parameterType="map" resultType="egovframework.base.model.alarm.NotificationMessage">
+		Select * from al_ntcn_mssage
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertNotificationMessage" parameterType="egovframework.base.model.alarm.NotificationMessage" useGeneratedKeys="true" keyProperty="ntcn_sn">
+		INSERT INTO al_ntcn_mssage (ntcn_name, sensor_ty_optn_code, sensor_ty_code, sensor_sub_ty_no, buld_group_sn, buld_sn, zone_sn, mssage, detct_ty_optn_code, detct_ty_code, mssage_ty_optn_code, mssage_ty_code, acti)
+		VALUES (#{ntcn_name}, #{sensor_ty_optn_code}, #{sensor_ty_code}, #{sensor_sub_ty_no}, #{buld_group_sn}, #{buld_sn}, #{zone_sn}, #{mssage}, #{detct_ty_optn_code}, #{detct_ty_code}, #{mssage_ty_optn_code}, #{mssage_ty_code}, #{acti})
+	</insert>
+
+	<insert id="insertNotificationMessages" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="ntcn_sn">
+		INSERT INTO al_ntcn_mssage (ntcn_name, sensor_ty_optn_code, sensor_ty_code, sensor_sub_ty_no, buld_group_sn, buld_sn, zone_sn, mssage, detct_ty_optn_code, detct_ty_code, mssage_ty_optn_code, mssage_ty_code, acti)
+		VALUES
+		<foreach collection="list" item="notificationMessage" separator=",">
+			(
+				(#{notificationMessage.ntcn_name}, #{notificationMessage.sensor_ty_optn_code}, #{notificationMessage.sensor_ty_code}, #{notificationMessage.sensor_sub_ty_no}, #{notificationMessage.buld_group_sn}, #{notificationMessage.buld_sn}, #{notificationMessage.zone_sn}, #{notificationMessage.mssage}, #{notificationMessage.detct_ty_optn_code}, #{notificationMessage.detct_ty_code}, #{notificationMessage.mssage_ty_optn_code}, #{notificationMessage.mssage_ty_code}, #{notificationMessage.acti})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateNotificationMessage" parameterType="egovframework.base.model.alarm.NotificationMessage">
+		UPDATE al_ntcn_mssage
+		SET ntcn_name = #{ntcn_name}, sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}, sensor_sub_ty_no = #{sensor_sub_ty_no}, buld_group_sn = #{buld_group_sn}, buld_sn = #{buld_sn}, zone_sn = #{zone_sn}, mssage = #{mssage}, detct_ty_optn_code = #{detct_ty_optn_code}, detct_ty_code = #{detct_ty_code}, mssage_ty_optn_code = #{mssage_ty_optn_code}, mssage_ty_code = #{mssage_ty_code}, acti = #{acti}
+		<where>
+			ntcn_sn = #{ntcn_sn}
+		</where>
+	</update>
+
+	<update id="updateNotificationMessageByCondition" parameterType="map">
+		UPDATE al_ntcn_mssage
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteNotificationMessage" parameterType="egovframework.base.model.alarm.NotificationMessage">
+		DELETE FROM al_ntcn_mssage
+		<where>
+			ntcn_sn = #{ntcn_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteNotificationMessageByCondition" parameterType="map">
+		DELETE FROM al_ntcn_mssage
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

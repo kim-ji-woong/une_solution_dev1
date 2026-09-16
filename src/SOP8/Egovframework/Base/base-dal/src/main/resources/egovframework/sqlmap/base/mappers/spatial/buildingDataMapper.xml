@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buildingDataMapper">
+
+	<select id="selectBuildingDatas" parameterType="map" resultType="egovframework.base.model.spatial.BuildingData">
+		Select * from sp_buld_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertBuildingData" parameterType="egovframework.base.model.spatial.BuildingData">
+		INSERT INTO sp_buld_data (buld_sn, ordr_indx, value, wdt, indent_level)
+		VALUES (#{buld_sn}, #{ordr_indx}, #{value}, #{wdt}, #{indent_level})
+	</insert>
+
+	<insert id="insertBuildingDatas" parameterType="java.util.List">
+		INSERT INTO sp_buld_data (buld_sn, ordr_indx, value, wdt, indent_level)
+		VALUES
+		<foreach collection="list" item="buildingData" separator=",">
+			(
+				(#{buildingData.buld_sn}, #{buildingData.ordr_indx}, #{buildingData.value}, #{buildingData.wdt}, #{buildingData.indent_level})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateBuildingData" parameterType="egovframework.base.model.spatial.BuildingData">
+		UPDATE sp_buld_data
+		SET value = #{value}, wdt = #{wdt}, indent_level = #{indent_level}
+		<where>
+			buld_sn = #{buld_sn}, ordr_indx = #{ordr_indx}
+		</where>
+	</update>
+
+	<update id="updateBuildingDataByCondition" parameterType="map">
+		UPDATE sp_buld_data
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteBuildingData" parameterType="egovframework.base.model.spatial.BuildingData">
+		DELETE FROM sp_buld_data
+		<where>
+			buld_sn = #{buld_sn}, ordr_indx = #{ordr_indx}
+		</where>
+	</delete>
+
+	<delete id="deleteBuildingDataByCondition" parameterType="map">
+		DELETE FROM sp_buld_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

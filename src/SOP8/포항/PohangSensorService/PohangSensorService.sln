@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PohangSensorService", "PohangSensorService\PohangSensorService.csproj", "{A7651333-15E3-4A66-BC0C-5E4764E565DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PohangSensorServer", "PohangSensorServer\PohangSensorServer.csproj", "{FF271FE6-770A-4EAA-A6EB-0ADFDE9221BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsDapperDBUtil", "..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj", "{3AAF9AE1-85E2-4836-B56C-EC593E8C0ED1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{7D16B48D-A5D9-42C0-AA81-53DBBB68047A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsData2", "..\..\Utility\dnsData\dnsData2.csproj", "{C78D2682-C054-47D4-BFE9-9A4866D5C2A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Response", "..\..\Utility\Response\Response.csproj", "{64F6EDBC-0F12-4FC2-9CB6-6FEDB3A0BF87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{D050E634-EE8C-4090-B56C-90E703D8C236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base.Model", "..\..\Base\Base.Model\Base.Model.csproj", "{51A455CF-B009-4EDC-984E-D42754F2EA7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pohang.Model", "..\Pohang.Model\Pohang.Model.csproj", "{773C9295-857C-4E54-A942-9B52356894B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7651333-15E3-4A66-BC0C-5E4764E565DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7651333-15E3-4A66-BC0C-5E4764E565DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7651333-15E3-4A66-BC0C-5E4764E565DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7651333-15E3-4A66-BC0C-5E4764E565DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF271FE6-770A-4EAA-A6EB-0ADFDE9221BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF271FE6-770A-4EAA-A6EB-0ADFDE9221BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF271FE6-770A-4EAA-A6EB-0ADFDE9221BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF271FE6-770A-4EAA-A6EB-0ADFDE9221BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AAF9AE1-85E2-4836-B56C-EC593E8C0ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AAF9AE1-85E2-4836-B56C-EC593E8C0ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AAF9AE1-85E2-4836-B56C-EC593E8C0ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AAF9AE1-85E2-4836-B56C-EC593E8C0ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C78D2682-C054-47D4-BFE9-9A4866D5C2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C78D2682-C054-47D4-BFE9-9A4866D5C2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C78D2682-C054-47D4-BFE9-9A4866D5C2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C78D2682-C054-47D4-BFE9-9A4866D5C2A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F6EDBC-0F12-4FC2-9CB6-6FEDB3A0BF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F6EDBC-0F12-4FC2-9CB6-6FEDB3A0BF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F6EDBC-0F12-4FC2-9CB6-6FEDB3A0BF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F6EDBC-0F12-4FC2-9CB6-6FEDB3A0BF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A455CF-B009-4EDC-984E-D42754F2EA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A455CF-B009-4EDC-984E-D42754F2EA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A455CF-B009-4EDC-984E-D42754F2EA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A455CF-B009-4EDC-984E-D42754F2EA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{773C9295-857C-4E54-A942-9B52356894B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{773C9295-857C-4E54-A942-9B52356894B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{773C9295-857C-4E54-A942-9B52356894B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{773C9295-857C-4E54-A942-9B52356894B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3AAF9AE1-85E2-4836-B56C-EC593E8C0ED1} = {7D16B48D-A5D9-42C0-AA81-53DBBB68047A}
+		{C78D2682-C054-47D4-BFE9-9A4866D5C2A2} = {7D16B48D-A5D9-42C0-AA81-53DBBB68047A}
+		{64F6EDBC-0F12-4FC2-9CB6-6FEDB3A0BF87} = {7D16B48D-A5D9-42C0-AA81-53DBBB68047A}
+		{51A455CF-B009-4EDC-984E-D42754F2EA7B} = {D050E634-EE8C-4090-B56C-90E703D8C236}
+		{773C9295-857C-4E54-A942-9B52356894B1} = {D050E634-EE8C-4090-B56C-90E703D8C236}
+	EndGlobalSection
+EndGlobal

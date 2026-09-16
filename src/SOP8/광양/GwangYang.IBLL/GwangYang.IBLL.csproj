@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Base\Base.Model\Base.Model.csproj" />
+      <ProjectReference Include="..\..\Utility\Response\Response.csproj" />
+      <ProjectReference Include="..\GwangYang.Model\GwangYang.Model.csproj" />
+      <ProjectReference Include="..\..\Utility\dnsExcelReport\dnsExcelReport.csproj" />
+      <ProjectReference Include="..\..\Base\TeamEditor\Base.TeamEditor.IBLL\Base.TeamEditor.IBLL.csproj" />
+    </ItemGroup>
+
+</Project>

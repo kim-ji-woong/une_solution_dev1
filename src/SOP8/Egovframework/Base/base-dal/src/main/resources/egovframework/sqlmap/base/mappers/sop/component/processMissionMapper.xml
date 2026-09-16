@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="processMissionMapper">
+
+	<select id="selectProcessMissions" parameterType="map" resultType="egovframework.base.model.sop.component.ProcessMission">
+		Select * from so_compn_procs_misn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertProcessMission" parameterType="egovframework.base.model.sop.component.ProcessMission" useGeneratedKeys="true" keyProperty="misn_sn">
+		INSERT INTO so_compn_procs_misn (misn_contents, compn_sn)
+		VALUES (#{misn_contents}, #{compn_sn})
+	</insert>
+
+	<insert id="insertProcessMissions" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="misn_sn">
+		INSERT INTO so_compn_procs_misn (misn_contents, compn_sn)
+		VALUES
+		<foreach collection="list" item="processMission" separator=",">
+			(
+				(#{processMission.misn_contents}, #{processMission.compn_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateProcessMission" parameterType="egovframework.base.model.sop.component.ProcessMission">
+		UPDATE so_compn_procs_misn
+		SET misn_contents = #{misn_contents}, compn_sn = #{compn_sn}
+		<where>
+			misn_sn = #{misn_sn}
+		</where>
+	</update>
+
+	<update id="updateProcessMissionByCondition" parameterType="map">
+		UPDATE so_compn_procs_misn
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteProcessMission" parameterType="egovframework.base.model.sop.component.ProcessMission">
+		DELETE FROM so_compn_procs_misn
+		<where>
+			misn_sn = #{misn_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteProcessMissionByCondition" parameterType="map">
+		DELETE FROM so_compn_procs_misn
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\esdk\dnsTcpLib2\dnsTcpLib2\dnsTcpLib2.csproj" />
+    <ProjectReference Include="..\..\..\..\Base\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\..\..\Base\SensorControlServer\dnsPipeHelper\dnsPipeHelper.csproj" />
+    <ProjectReference Include="..\..\..\..\Base\SensorControlServer\dnsSensorServer\dnsSensorServer.csproj" />
+    <ProjectReference Include="..\..\..\..\Utility\dnsData\dnsData2.csproj" />
+  </ItemGroup>
+
+</Project>

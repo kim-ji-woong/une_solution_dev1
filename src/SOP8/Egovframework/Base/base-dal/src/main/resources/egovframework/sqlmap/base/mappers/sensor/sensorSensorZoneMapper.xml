@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sensorSensorZoneMapper">
+
+	<select id="selectSensorSensorZones" parameterType="map" resultType="egovframework.base.model.sensor.SensorSensorZone">
+		Select * from fa_sensor_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSensorSensorZone" parameterType="egovframework.base.model.sensor.SensorSensorZone">
+		INSERT INTO fa_sensor_zone (sensor_zone_sn, sensor_sn, sensor_ty_optn_code, sensor_ty_code, sensor_sub_ty_no, unq_key, eqp_zone_sn, alarm_yn, tag_no, acti, sensor_server_sn, descp)
+		VALUES (#{sensor_zone_sn}, #{sensor_sn}, #{sensor_ty_optn_code}, #{sensor_ty_code}, #{sensor_sub_ty_no}, #{unq_key}, #{eqp_zone_sn}, #{alarm_yn}, #{tag_no}, #{acti}, #{sensor_server_sn}, #{descp})
+	</insert>
+
+	<insert id="insertSensorSensorZones" parameterType="java.util.List">
+		INSERT INTO fa_sensor_zone (sensor_zone_sn, sensor_sn, sensor_ty_optn_code, sensor_ty_code, sensor_sub_ty_no, unq_key, eqp_zone_sn, alarm_yn, tag_no, acti, sensor_server_sn, descp)
+		VALUES
+		<foreach collection="list" item="sensorSensorZone" separator=",">
+			(
+				(#{sensorSensorZone.sensor_zone_sn}, #{sensorSensorZone.sensor_sn}, #{sensorSensorZone.sensor_ty_optn_code}, #{sensorSensorZone.sensor_ty_code}, #{sensorSensorZone.sensor_sub_ty_no}, #{sensorSensorZone.unq_key}, #{sensorSensorZone.eqp_zone_sn}, #{sensorSensorZone.alarm_yn}, #{sensorSensorZone.tag_no}, #{sensorSensorZone.acti}, #{sensorSensorZone.sensor_server_sn}, #{sensorSensorZone.descp})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSensorSensorZone" parameterType="egovframework.base.model.sensor.SensorSensorZone">
+		UPDATE fa_sensor_zone
+		SET sensor_sn = #{sensor_sn}, sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}, sensor_sub_ty_no = #{sensor_sub_ty_no}, unq_key = #{unq_key}, eqp_zone_sn = #{eqp_zone_sn}, alarm_yn = #{alarm_yn}, tag_no = #{tag_no}, acti = #{acti}, sensor_server_sn = #{sensor_server_sn}, descp = #{descp}
+		<where>
+			sensor_zone_sn = #{sensor_zone_sn}
+		</where>
+	</update>
+
+	<update id="updateSensorSensorZoneByCondition" parameterType="map">
+		UPDATE fa_sensor_zone
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSensorSensorZone" parameterType="egovframework.base.model.sensor.SensorSensorZone">
+		DELETE FROM fa_sensor_zone
+		<where>
+			sensor_zone_sn = #{sensor_zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteSensorSensorZoneByCondition" parameterType="map">
+		DELETE FROM fa_sensor_zone
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Pohang.IBLL</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Base\Base.Model\Base.Model.csproj" />
+      <ProjectReference Include="..\..\Utility\Response\Response.csproj" />
+      <ProjectReference Include="..\Pohang.Model\Pohang.Model.csproj" />
+    </ItemGroup>
+
+</Project>

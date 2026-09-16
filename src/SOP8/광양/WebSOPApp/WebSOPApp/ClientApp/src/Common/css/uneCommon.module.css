@@ -1,0 +1,276 @@
+﻿.liDot {
+    color: #fff;
+    font-size: 12px;
+}
+
+.liDot:before {
+    content: '○';
+    color: #fff;
+    font-size: 9px;
+    position: absolute;
+    left: 0;
+    top: 6px;
+}
+
+.liNoDot {
+    color: #fff;
+    font-size: 12px;
+}
+
+.pointCursor {
+    cursor: pointer;
+}
+
+
+/*조직관리 CSS*/
+
+/*Menubar*/
+/* .aslWrap.typeH { background: #162235;}
+
+.aslWrap.typeH .salCont dd a:hover,
+.aslWrap.typeH .salCont dd a:active,
+.aslWrap.typeH .salCont dd a:hover { cursor: pointer; background: #070d17;}
+.aslWrap.typeH .salCont dd { margin-bottom: 5px;}
+.aslWrap.typeH .salCont dd:last-child {margin-bottom: 0;}
+.aslWrap.typeH .salCont dd a {display: block; height: 40px; line-height: 40px; text-align: center; color: #fff; background: rgba(59,63,92,0.5); border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;}
+.aslWrap.typeH .salCont dd a.disabled {display: block; height: 40px; line-height: 40px; text-align: center; color: #8e8e8e; background: rgba(88,88,88,0.5); border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; cursor: default;} */
+
+
+/*Sidebar*/
+.salMenuu {background: #fff;}
+.salMenuu.on {background: none;}
+.salMenuu.on .salIco { color: #162235; background: none;}
+.salMenuu.on .salIco:after {content: ''; display: block; height: 1px; position: absolute; left: 10px; right: 10px; bottom: 0; background:black; background: rgba(0,0,0,0.2);}
+.salMenuu.on .salCont {display: block;}
+.salIco {display: block; height: 100px;  text-align: center; position: relative; font-size: 15px; padding-top: 22px; cursor: pointer; color:black;}
+.salIco:before {content: ''; display: block; width: 34px; height: 34px; margin: 0 auto; margin-bottom: 3px; color:black;}
+
+
+.sarSel ul {position: absolute; left: 0; right: 0; top: 100%; z-index: 10; background: #fff; display: none;
+            -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1); -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);}
+.sarSel ul li { border-bottom: solid 1px #e5e5e5;}
+.sarSel ul li a { display: block; padding: 15px 20px; font-size: 18px; color: #162235;}
+.sarSel ul li a:hover { background: #f7f7f7;}
+
+.scTb th .scTb td {border: solid 1px #dfdfdf;}
+
+
+.spprCont .scTb tbody tr.on {
+	background: #0095FF;
+	color: #fff;
+}
+
+/*Search*/
+.sctSch { float: left; display: block; margin-right: 10px; cursor: pointer;}
+.sctSch:after { content: ''; display: table; clear: both;}
+.sctSch input[type="text"] { display: block; margin-right: 4px; width: 230px; height: 38px; float: left;}
+.sctSch button,
+.sctSch a { background: #3B3F5C; border-color: #3B3F5C; color: #fff;}
+
+.sctSch button:hover,
+.sctSch button:active,
+.sctSch button:focus,
+.sctSch a:hover,
+.sctSch a:active,
+.sctSch a:focus {background: #363a54; border-color: #363a54; color: #fff;}
+
+/*편집버튼*/
+.sctEdtt{position:relative; padding-right: 45px;cursor:pointer;}
+.sctEdtt p {line-height: 30px; max-height:30px !important;} /*0817 수정*/ 
+.sctEdtt a { display: inline-block; width: 40px; height: 30px; line-height: 30px; font-size: 13px;
+             background: #686868; color: #fff; position: absolute; right: 0; top: -1px; border-radius: 4px; -moz-border-radius: 4px;
+             -webkit-border-radius: 4px;}
+
+.editBtn{content:''; height:20px;} /*0817 추가*/
+
+.sctEdtt a:hover,
+.sctEdtt a:active,
+.sctEdtt a:focus {
+    background: #535353;
+}
+.scFt {border-top: solid 1px #3B3F5C;}
+
+.sctRht a.sctUld {background: #3b3f5c; border-color: #3b3f5c; color: #fff; cursor: pointer;}
+.sctRht a.sctUld:hover,
+.sctRht a.sctUld:active,
+.sctRht a.sctUld:focus { background: #363A54; border-color: #363A54;}
+
+
+/***********************************************************/
+/*SOP simulator css*/
+
+
+.innerSectionn {overflow-y:auto; padding:15px 20px; line-height:25px; font-weight:400; font-size:15px; margin-bottom: 10px;  background-color:#1B212C;
+                border-radius:0 0 4px 4px; }
+.innerSectionnn { max-height:calc(100% - 308px); overflow-y: auto;  border-radius: 0 0 4px 4px; 
+                  /* border:solid 1px #d1d1d1; */ height: 100%; background: #1B212C; } 
+.innerSectionnnn { height:100%; max-height:calc(100% - 56px); /* border:solid 1px #d1d1d1; */ border-radius: 3px; overflow-y:auto; background: #1B212C; }
+
+.innerSectionn ul li{ font-size: 14px; font-weight: 400; letter-spacing: 0px; line-height: 30px; }
+
+
+.tabAreaLeft { float:left; display: inline-block; width:100px; height:48px; padding:15px 0; border: 1px solid #3b3f5c; margin-right:10px; border-radius:5px;}
+.posiRelative { position: relative; width: 100%; height: 52px; }
+.posiAbsolute{ position:absolute; /* top:-25px; */ }
+
+/* .tabArea li:last-child{text-overflow:ellipsis; } */
+
+
+/*훈련모드*/
+.modeSelect{ width:130px; height:30px; display:inline-block; border-radius:5px; border:solid 2px #fff; color:#fff; align-items:center; font-weight:400; background-color:#3b3f5c; 
+             text-align:center; position:absolute; z-index:1; top:45px;} 
+/*
+#refresh { width: 60px; height: 50px; padding: 8px 3px; cursor: pointer; position: absolute; top: 25px; right: 10px;
+           z-index: 2; background-image:url(../image/icon/reset_ico.svg); background-repeat: no-repeat;} */
+
+.currentTime { position: absolute;  display:inline-block; float:left; width: 90px; height: 50px; z-index: 99;
+               top:35px; left:1790px; border:solid 1px black;}
+
+/*버튼 정렬*/
+.btnStartArea {float:right; text-align:center; font-size:0;}
+.btnArea {float:right; margin-right:85px; text-align:center; font-size:0;}
+.btnAreaDisable {float:right; margin-right:95px; text-align:center; font-size:0;}
+
+/* 임무목록 컴포넌트 색상적용 */
+.currentBox { /* border: solid 4px #ff9900; */ border-radius: 3px; }
+
+
+/*전파대상자 아이콘*/
+.propagatePeople { float:right; position:absolute; background-image: url('../../SOPSimulator/img/personIcon.png'); background-repeat: no-repeat; width:29px; height:25px; align-items:center; top:-8px; right:5px; cursor:pointer; } 
+.propagatePeople:hover { /* background-image:url(../image/icon/peoples_hover.png); */ background-repeat: no-repeat; width:29px; align-items:center;}
+.propagatePeoplee{ float:left; display:inline-block; background: url(../image/icon/peoples.png); background-repeat: no-repeat; width:25px; height:25px; align-items:center;
+                   margin:5px 10px 0 5px;}
+
+/*tooltip*/
+.tooltip { position: relative; display: inline-block; left:-55px; top:0;}
+.dropBox { visibility: hidden; position: absolute; z-index: 1; width: 258px; height: 155px; border: solid 1px #0095FF;
+           background: #1A1C2C; border-radius: 5px; color: #E9EAEB; padding: 0; margin-top: 15px; margin-left:-85px; text-align: center;} 
+.tooltip:hover
+.dropBox { visibility:visible;}
+.dropBox > p{ padding: 10px 10px; color: #fff; }
+.dropBox > p:hover{ /* background-color: #5fb2af; */ }
+.dropBox > p:nth-child(1):hover{ background-color:#1a1c2c; border-radius:3px;}
+.dropBox > p:nth-child(1) {font-weight: 500; padding:10px; border-bottom: solid 1px #5fb2af;}
+.dropBox > p:nth-child(2) {line-height:20px;}
+.dropBox > p:nth-child(3) {line-height:20px;}
+.dropBox > p:nth-child(4) {line-height:20px;}
+
+
+.dropFlexTitle{ display: flex; height: 27px; line-height: 27px; background: #0095FF; color: #0D0D0D; align-items: center;
+                padding: 0px 10px; }
+.dropFlexTitle p{ flex: 1; text-align: left; }
+.editIcon{ display:inline-block; width: 12px; height: 12px; background: url('../../Settings/image/pencil_icon.png')no-repeat center center; 
+           cursor: pointer; }  
+
+.dropFlex{ display: flex; height: 32px; line-height: 32px; border-bottom: dashed 1px #485775; padding-left: 14px; }
+.arrowLeft{ display: inline-block; width: 10px; height: 32px; background: url('../../Settings/image/arrowLeft.png')no-repeat center center;
+            margin-right: 10px; }
+.personName{ display: inline-flex; width: 100px;  font-size: 14px; color: #fff; }
+.phoneName{ display: flex; align-items: center;  font-size: 14px; color: #fff; height: 32px; line-height: 32px;
+            /* padding-top: 4px; */ padding-right: 10px;  }
+
+.phoneName input[type="text"]{ display: block; width: 134px; height: 24px; line-height: 24px; background: none; border: solid 1px #485775;
+                               border-radius: 3px; color: #fff; }
+.phoneName input[type="text"]::placeholder{ color: #485775; padding-left: 6px; }
+
+.dropBtn{ display: block; width: 51px; height: 20px; line-height: 20px; border-radius: 5px; background-image: linear-gradient(#0095FF, #11753A); 
+          margin-top: 5px; margin-right: 8px; float: right;  font-size: 12px; cursor: pointer; }
+
+
+/*전체전파 버튼*/
+.btnPropagateSelect { float:right; display:inline-block; margin-right:95px; width:82px; height:30px; cursor:pointer;
+                      border-radius:5px;  font-size:14px; letter-spacing: -0.05em; text-align:center; color:#000000; background-color: #0095FF; } 
+.btnPropagateSelect:hover { /* background: #012c93; */ } 
+
+/*전체전파 비활성화*/
+.proBtnDisable { float:right; display: inline-block; width: 82px; height: 30px; border: 1px solid #fff; font-size: 14px; letter-spacing: -0.05em; border-radius: 5px; opacity:0.3; 
+                cursor:default; background:none; pointer-events:none; align-items:center; text-align:center; color: #fff; line-height: 27px;}
+
+/*아이콘*/
+.sendMessage .message{ margin-left:15px; margin-top:2px;}
+.sendMessage .email{ margin-left:20px;}
+.sendMessage .mic{ margin-left:20px;}
+.sendMessage .volume{ margin-left:20px; }
+.message { background: url(../image/icon/message.png) 0 0 no-repeat; width: 23px; height:16px; display: inline-block; }
+.email { display: inline-block; background: transparent url(../image/icon/Email.png) 0% 0% no-repeat padding-box; opacity: 1; width:23px; height:23px;}
+.mic{display: inline-block; background:url(../image/icon/mic_off.png) 0% 0% no-repeat; width: 16px; height: 25px;}
+.isOn .mic{display:inline-block;vertical-align:top;background-image:url(../image/icon/mic_on__.png)}
+.volume { display: inline-block; background: transparent url(../image/icon/volume_off_.png) 0 0 no-repeat padding-box; opacity: 1; width: 30px; height:19px; }
+.isOn .volume{display:inline-block;vertical-align:top;background-image:url(../image/icon/volume_on__.png)}
+
+
+/*정렬 test*/
+.messagee{ background: url('../../SOPSimulator/img/messageIcon.png') 0 0 no-repeat; width: 51px; height:38px; display: inline-block;
+           background-position: center; margin-left: 14px;  margin-bottom: 20px; /* margin-left:14px; margin-right:20px; margin-top:3px; */ } 
+.emaill{ display: inline-block; background: transparent url('../../SOPSimulator/img/emailIcon.png') 0% 0% no-repeat padding-box; opacity: 1; width:51px; height:39px; margin-left:14px; }
+.talkBtnOff { display: inline-block; background: url('../../SOPSimulator/img/talkOff.png') no-repeat padding-box; 
+             opacity: 1; width:55px; height:55px; margin-left: 10px; margin-right: 14px; background-size: 30px; background-position: center; }
+.talkBtnOn{ display: inline-block; background: url('../../SOPSimulator/img/talkOn.png') no-repeat padding-box; 
+            opacity: 1; width:55px; height:55px; margin-left: 10px; margin-right: 14px; background-size: 30px; background-position: center; }
+.talkBtnOff:hover{ display: inline-block; background: url('../../SOPSimulator/img/talkOn.png') no-repeat padding-box; 
+                   opacity: 1; width:55px; height:55px; margin-left: 10px; margin-right: 14px; background-size: 30px; background-position: center; }
+
+
+/*방송, 알람 on/off*/
+.brdcstInfo{position:relative}
+.brdcstInfo.isShow .brdcstInfoList{display:block}
+.brdcstInfo .brdcstInfoList{ display:none;position:absolute;top:38px;right:-40px;z-index:1;width:100px;height:100px;background-color:#060817;border:1px solid #3B3F5C }
+.brdcstInfo .brdcstInfoList li + li{border-top:1px solid #3B3F5C}
+.brdcstInfo .brdcstInfoList button{width:100%;font-size:14px;line-height:50px;color:#fff;text-align:center}
+/*.brdcstInfo .brdcstInfoList button[data-value="N"]{color:#369ed2}*/ /*원본*/
+/*.brdcstInfo .brdcstInfoList button[data-value="Y"]{color:#00ff4e}*/ /*원본*/
+.brdcstInfo .brdcstInfoList button[data-value="N"] {color:#fff} 
+.brdcstInfo .brdcstInfoList button[data-value="N"]{color:#39A7DE} /*0722 수정*/
+
+/*********************************************************/
+.brdcstInfoOn {}
+.brdcstInfoOff{}
+.volumeInfoOn{ color:#39A7DE !important;}
+.volumeInfoOff{}  /*0722 추가*/
+
+.volumeInfo{position:relative}
+.volumeInfo.isShow .volumeInfoList{display:block}
+.volumeInfo .volumeInfoList{display:none;position:absolute;top:36px;right:-10px;z-index:1;width:100px;height:100px;background-color:#060817;border:1px solid #3B3F5C}
+.volumeInfo .volumeInfoList li + li{border-top:1px solid #3B3F5C}
+.volumeInfo .volumeInfoList button{width:100%;font-size:14px;line-height:50px;color:#fff;text-align:center}
+.volumeInfo .volumeInfoList button[data-value="N"]{color:#369ed2}
+/*.volumeInfo .volumeInfoList button[data-value="Y"]{color:#49f8fc}*/ /*원본*/
+.volumeInfo .volumeInfoList button[data-value="N"]{color:#fff}
+.volumeInfo .volumeInfoList button[data-value="N"]{color:#39A7DE}  /*0722 수정*/
+
+/*완료상태*/
+.completionStatus{ display: flex; /* margin-right:15px; */ /* margin-left: 114px; */ /* margin-left: 36px; */     
+                   position: absolute; right: 30px; top: 45%; }
+.completionStatuss{ float:right; right:30px; position:absolute; top:17px;display:inline-block; z-index:2;
+                    color: #fff; font-size: 14px;}
+
+/*beginOption 팝업*/
+.sqpTime li:nth-child(1) { width: 77px;}
+.sqpTime li:nth-child(3) {width: 61px;}
+.sqpTime li:nth-child(5) {width: 61px;}
+.sqpTime li:nth-child(7) {width: 73px; margin-left:10px;}
+.sqpTime li:nth-child(9) {width: 73px;}
+
+
+.endBoxDetail{display:inline-block; width:80px; height:30px; padding:5px 0; border:2px solid #fff; font-size:14px;
+              letter-spacing: -0.05em; border-radius: 4px;}
+.endBoxDetail:hover{background-color:rgba(56,64,101,0.5);}
+
+
+/*이력관리 수정*/
+#hsback { height:100vh; margin: 0; padding:0; background-color:#ffffff;}
+.hsScr {overflow: auto; /*width: 100vh;*/  height: 100vh; margin-left:200px;}
+
+.sectionblank {color:white;}
+
+/* 타이틀바 관련 수정 */
+.paddingTop50 { padding-top: 50px; }
+/* .paddingTop60 { padding-top: 60px; } */
+.adminProfile{ background:url('../img/common/rq_profile.png')no-repeat center center; }
+.userProfile{ background:url('../img/common/rq_profile3.png')no-repeat center center; }
+
+.selectedTr {
+    border: solid;
+    border-color: green;
+}

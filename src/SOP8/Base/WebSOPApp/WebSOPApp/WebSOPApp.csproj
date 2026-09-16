@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\Account\Base.Account.BLL\Base.Account.BLL.csproj" />
+    <ProjectReference Include="..\..\Account\Base.Account.IBLL\Base.Account.IBLL.csproj" />
+    <ProjectReference Include="..\..\Base.Controller\Base.Controller.csproj" />
+    <ProjectReference Include="..\..\Base.DAL\Base.DAL.csproj" />
+    <ProjectReference Include="..\..\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\History\Base.History.BLL\Base.History.BLL.csproj" />
+    <ProjectReference Include="..\..\History\Base.History.IBLL\Base.History.IBLL.csproj" />
+    <ProjectReference Include="..\..\SDMS\Base.SDMS.BLL\Base.SDMS.BLL.csproj" />
+    <ProjectReference Include="..\..\SDMS\Base.SDMS.IBLL\Base.SDMS.IBLL.csproj" />
+    <ProjectReference Include="..\..\SensorSimulator\Base.SensorSimulator.BLL\Base.SensorSimulator.BLL.csproj" />
+    <ProjectReference Include="..\..\SensorSimulator\Base.SensorSimulator.IBLL\Base.SensorSimulator.IBLL.csproj" />
+    <ProjectReference Include="..\..\Settings\Base.Settings.BLL\Base.Settings.BLL.csproj" />
+    <ProjectReference Include="..\..\Settings\Base.Settings.IBLL\Base.Settings.IBLL.csproj" />
+    <ProjectReference Include="..\..\SOPManager\Base.SOPManager.BLL\Base.SOPManager.BLL.csproj" />
+    <ProjectReference Include="..\..\SOPManager\Base.SOPManager.IBLL\Base.SOPManager.IBLL.csproj" />
+    <ProjectReference Include="..\..\SOPSimulator\Base.SOPSimulator.BLL\Base.SOPSimulator.BLL.csproj" />
+    <ProjectReference Include="..\..\SOPSimulator\Base.SOPSimulator.IBLL\Base.SOPSimulator.IBLL.csproj" />
+    <ProjectReference Include="..\..\TeamEditor\Base.TeamEditor.BLL\Base.TeamEditor.BLL.csproj" />
+    <ProjectReference Include="..\..\TeamEditor\Base.TeamEditor.IBLL\Base.TeamEditor.IBLL.csproj" />
+    <ProjectReference Include="..\..\Weather\Base.Weather.BLL\Base.Weather.BLL.csproj" />
+    <ProjectReference Include="..\..\Weather\Base.Weather.IBLL\Base.Weather.IBLL.csproj" />
+    <ProjectReference Include="..\Agent.Sample\Agent.Sample.csproj" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)build\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

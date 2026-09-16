@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="temporaryMapper">
+
+	<select id="selectTemporaries" parameterType="map" resultType="egovframework.base.model.common.team.Temporary">
+		Select * from co_team_tmpr
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertTemporary" parameterType="egovframework.base.model.common.team.Temporary" useGeneratedKeys="true" keyProperty="tmpr_sn">
+		INSERT INTO co_team_tmpr (parnts_sn, team_name, nor_yn, site_sn)
+		VALUES (#{parnts_sn}, #{team_name}, #{nor_yn}, #{site_sn})
+	</insert>
+
+	<insert id="insertTemporaries" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="tmpr_sn">
+		INSERT INTO co_team_tmpr (parnts_sn, team_name, nor_yn, site_sn)
+		VALUES
+		<foreach collection="list" item="temporary" separator=",">
+			(
+				(#{temporary.parnts_sn}, #{temporary.team_name}, #{temporary.nor_yn}, #{temporary.site_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateTemporary" parameterType="egovframework.base.model.common.team.Temporary">
+		UPDATE co_team_tmpr
+		SET parnts_sn = #{parnts_sn}, team_name = #{team_name}, nor_yn = #{nor_yn}, site_sn = #{site_sn}
+		<where>
+			tmpr_sn = #{tmpr_sn}
+		</where>
+	</update>
+
+	<update id="updateTemporaryByCondition" parameterType="map">
+		UPDATE co_team_tmpr
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteTemporary" parameterType="egovframework.base.model.common.team.Temporary">
+		DELETE FROM co_team_tmpr
+		<where>
+			tmpr_sn = #{tmpr_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteTemporaryByCondition" parameterType="map">
+		DELETE FROM co_team_tmpr
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

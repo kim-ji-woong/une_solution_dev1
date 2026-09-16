@@ -1,0 +1,212 @@
+package egovframework.base.history.ibll.request;
+
+import egovframework.base.history.ibll.models.history.SensorTypeData;
+
+import java.util.List;
+
+public class RequestExcelAnalysisHistory {
+
+    private int beginYear = -1;
+    private int beginMonth = -1;
+    private int beginDay = -1;
+    private int endYear = -1;
+    private int endMonth = -1;
+    private int endDay = -1;
+
+    private Integer buildingGroupNo = null;
+    private Integer buildingNo = null;
+    private Integer zoneNo = null;
+    private Integer sensorNo = null;
+    private Integer sensorType = null;
+    private List<Integer> sensorSubTypes = null;
+    private Integer siteNo = null;
+
+    private List<SensorTypeData> sensorTypeDatas = null;
+
+    private boolean useSensorTypeName = true;
+    private boolean useSensorName = true;
+    private boolean useLocationName = true;
+    private boolean useDetectCount = true;
+    private boolean useMalfunctionCount = true;
+    private boolean useSensorClearCount = true;
+    private boolean useUserResetCount = true;
+    private boolean useMalfunctionRatio = true;
+
+    // Getters and Setters
+
+    public int getBeginYear() {
+        return beginYear;
+    }
+
+    public void setBeginYear(int beginYear) {
+        this.beginYear = beginYear;
+    }
+
+    public int getBeginMonth() {
+        return beginMonth;
+    }
+
+    public void setBeginMonth(int beginMonth) {
+        this.beginMonth = beginMonth;
+    }
+
+    public int getBeginDay() {
+        return beginDay;
+    }
+
+    public void setBeginDay(int beginDay) {
+        this.beginDay = beginDay;
+    }
+
+    public int getEndYear() {
+        return endYear;
+    }
+
+    public void setEndYear(int endYear) {
+        this.endYear = endYear;
+    }
+
+    public int getEndMonth() {
+        return endMonth;
+    }
+
+    public void setEndMonth(int endMonth) {
+        this.endMonth = endMonth;
+    }
+
+    public int getEndDay() {
+        return endDay;
+    }
+
+    public void setEndDay(int endDay) {
+        this.endDay = endDay;
+    }
+
+    public Integer getBuildingGroupNo() {
+        return buildingGroupNo;
+    }
+
+    public void setBuildingGroupNo(Integer buildingGroupNo) {
+        this.buildingGroupNo = buildingGroupNo;
+    }
+
+    public Integer getBuildingNo() {
+        return buildingNo;
+    }
+
+    public void setBuildingNo(Integer buildingNo) {
+        this.buildingNo = buildingNo;
+    }
+
+    public Integer getZoneNo() {
+        return zoneNo;
+    }
+
+    public void setZoneNo(Integer zoneNo) {
+        this.zoneNo = zoneNo;
+    }
+
+    public Integer getSensorNo() {
+        return sensorNo;
+    }
+
+    public void setSensorNo(Integer sensorNo) {
+        this.sensorNo = sensorNo;
+    }
+
+    public Integer getSensorType() {
+        return sensorType;
+    }
+
+    public void setSensorType(Integer sensorType) {
+        this.sensorType = sensorType;
+    }
+
+    public List<Integer> getSensorSubTypes() {
+        return sensorSubTypes;
+    }
+
+    public void setSensorSubTypes(List<Integer> sensorSubTypes) {
+        this.sensorSubTypes = sensorSubTypes;
+    }
+
+    public Integer getSiteNo() {
+        return siteNo;
+    }
+
+    public void setSiteNo(Integer siteNo) {
+        this.siteNo = siteNo;
+    }
+
+    public List<SensorTypeData> getSensorTypeDatas() {
+        return sensorTypeDatas;
+    }
+
+    public void setSensorTypeDatas(List<SensorTypeData> sensorTypeDatas) {
+        this.sensorTypeDatas = sensorTypeDatas;
+    }
+
+    public boolean isUseSensorTypeName() {
+        return useSensorTypeName;
+    }
+
+    public void setUseSensorTypeName(boolean useSensorTypeName) {
+        this.useSensorTypeName = useSensorTypeName;
+    }
+
+    public boolean isUseSensorName() {
+        return useSensorName;
+    }
+
+    public void setUseSensorName(boolean useSensorName) {
+        this.useSensorName = useSensorName;
+    }
+
+    public boolean isUseLocationName() {
+        return useLocationName;
+    }
+
+    public void setUseLocationName(boolean useLocationName) {
+        this.useLocationName = useLocationName;
+    }
+
+    public boolean isUseDetectCount() {
+        return useDetectCount;
+    }
+
+    public void setUseDetectCount(boolean useDetectCount) {
+        this.useDetectCount = useDetectCount;
+    }
+
+    public boolean isUseMalfunctionCount() {
+        return useMalfunctionCount;
+    }
+
+    public void setUseMalfunctionCount(boolean useMalfunctionCount) {
+        this.useMalfunctionCount = useMalfunctionCount;
+    }
+
+    public boolean isUseSensorClearCount() {
+        return useSensorClearCount;
+    }
+
+    public void setUseSensorClearCount(boolean useSensorClearCount) {
+        this.useSensorClearCount = useSensorClearCount;
+    }
+
+    public boolean isUseUserResetCount() {
+        return useUserResetCount;
+    }
+
+    public void setUseUserResetCount(boolean useUserResetCount) {
+        this.useUserResetCount = useUserResetCount;
+    }
+
+    public boolean isUseMalfunctionRatio() {
+        return useMalfunctionRatio;
+    }
+
+    public void setUseMalfunctionRatio(boolean useMalfunctionRatio) {
+        this.useMalfunctionRatio = useMalfunctionRatio;
+    }
+}

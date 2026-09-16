@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+    <ProjectReference Include="..\..\..\..\..\esdk\dnsSMS\dnsSMS\dnsSMS.csproj" />
+    <ProjectReference Include="..\..\..\Base\SOPWebServer\SOPWebServer.IBLL\SOPWebServer.IBLL.csproj" />
+    <ProjectReference Include="..\..\..\Utility\dnsData\dnsData2.csproj" />
+    <ProjectReference Include="..\..\dnsDataSoulbrain\dnsDataSoulbrain.csproj" />
+  </ItemGroup>
+
+</Project>

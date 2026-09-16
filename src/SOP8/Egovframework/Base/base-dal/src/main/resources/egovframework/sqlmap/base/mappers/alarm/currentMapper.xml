@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="currentMapper">
+
+	<select id="selectCurrents" parameterType="map" resultType="egovframework.base.model.alarm.Current">
+		Select * from al_cur
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertCurrent" parameterType="egovframework.base.model.alarm.Current">
+		INSERT INTO al_cur (sensor_zone_hist_sn, sensor_zone_sn, detct_ty_optn_code, detct_ty_code, alarm_tm, sop_sttus_optn_code, sop_sttus_code, alarm_level, user_sn)
+		VALUES (#{sensor_zone_hist_sn}, #{sensor_zone_sn}, #{detct_ty_optn_code}, #{detct_ty_code}, #{alarm_tm}, #{sop_sttus_optn_code}, #{sop_sttus_code}, #{alarm_level}, #{user_sn})
+	</insert>
+
+	<insert id="insertCurrents" parameterType="java.util.List">
+		INSERT INTO al_cur (sensor_zone_hist_sn, sensor_zone_sn, detct_ty_optn_code, detct_ty_code, alarm_tm, sop_sttus_optn_code, sop_sttus_code, alarm_level, user_sn)
+		VALUES
+		<foreach collection="list" item="current" separator=",">
+			(
+				(#{current.sensor_zone_hist_sn}, #{current.sensor_zone_sn}, #{current.detct_ty_optn_code}, #{current.detct_ty_code}, #{current.alarm_tm}, #{current.sop_sttus_optn_code}, #{current.sop_sttus_code}, #{current.alarm_level}, #{current.user_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateCurrent" parameterType="egovframework.base.model.alarm.Current">
+		UPDATE al_cur
+		SET detct_ty_optn_code = #{detct_ty_optn_code}, detct_ty_code = #{detct_ty_code}, alarm_tm = #{alarm_tm}, sop_sttus_optn_code = #{sop_sttus_optn_code}, sop_sttus_code = #{sop_sttus_code}, alarm_level = #{alarm_level}, user_sn = #{user_sn}
+		<where>
+			sensor_zone_hist_sn = #{sensor_zone_hist_sn}, sensor_zone_sn = #{sensor_zone_sn}
+		</where>
+	</update>
+
+	<update id="updateCurrentByCondition" parameterType="map">
+		UPDATE al_cur
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteCurrent" parameterType="egovframework.base.model.alarm.Current">
+		DELETE FROM al_cur
+		<where>
+			sensor_zone_hist_sn = #{sensor_zone_hist_sn}, sensor_zone_sn = #{sensor_zone_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteCurrentByCondition" parameterType="map">
+		DELETE FROM al_cur
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gridMapper">
+
+	<select id="selectGrids" parameterType="map" resultType="egovframework.base.model.sop.component.Grid">
+		Select * from so_compn_grd
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertGrid" parameterType="egovframework.base.model.sop.component.Grid" useGeneratedKeys="true" keyProperty="grid_sn">
+		INSERT INTO so_compn_grd (step_memb_sn)
+		VALUES (#{step_memb_sn})
+	</insert>
+
+	<insert id="insertGrids" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="grid_sn">
+		INSERT INTO so_compn_grd (step_memb_sn)
+		VALUES
+		<foreach collection="list" item="grid" separator=",">
+			(
+				(#{grid.step_memb_sn})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateGrid" parameterType="egovframework.base.model.sop.component.Grid">
+		UPDATE so_compn_grd
+		SET step_memb_sn = #{step_memb_sn}
+		<where>
+			grid_sn = #{grid_sn}
+		</where>
+	</update>
+
+	<update id="updateGridByCondition" parameterType="map">
+		UPDATE so_compn_grd
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteGrid" parameterType="egovframework.base.model.sop.component.Grid">
+		DELETE FROM so_compn_grd
+		<where>
+			grid_sn = #{grid_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteGridByCondition" parameterType="map">
+		DELETE FROM so_compn_grd
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

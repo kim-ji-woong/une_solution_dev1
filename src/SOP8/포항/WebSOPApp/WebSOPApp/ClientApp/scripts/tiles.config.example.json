@@ -1,0 +1,26 @@
+{
+  "_comment": "타일 다운로드 스크립트 설정 파일.",
+  "_usage": "이 파일을 tiles.config.json 으로 복사한 후 실제 값을 입력하세요.",
+  "_warning": "tiles.config.json 은 git에 커밋하지 마세요 (비밀번호 / API 키 포함).",
+
+  "db": {
+    "host":     "127.0.0.1",
+    "port":     5432,
+    "database": "DB명_입력",
+    "user":     "postgres",
+    "password": "DB_비밀번호_입력"
+  },
+
+  "tileSource": {
+    "_comment": "사용할 타일 소스. 'mapbox-dark' | 'vworld-midnight' | 'vworld-base' | 'vworld-white' | 'cartodb-dark'",
+    "type":   "mapbox-dark",
+    "apiKey": "Mapbox_또는_VWorld_API_키_입력"
+  },
+
+  "tiles": {
+    "zoomMin":    11,
+    "zoomMax":    15,
+    "bufferDeg":  0.05,
+    "_bufferComment": "DB bounds에 추가할 여유 범위 (도 단위). 0.05 ≈ 약 5.5km"
+  }
+}

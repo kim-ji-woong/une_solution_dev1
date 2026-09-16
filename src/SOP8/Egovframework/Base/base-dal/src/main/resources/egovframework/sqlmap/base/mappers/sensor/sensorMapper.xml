@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sensorMapper">
+
+	<select id="selectSensors" parameterType="map" resultType="egovframework.base.model.sensor.Sensor">
+		Select * from fa_sensor
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertSensor" parameterType="egovframework.base.model.sensor.Sensor">
+		INSERT INTO fa_sensor (sensor_sn, sensor_ty_optn_code, sensor_ty_code, sensor_name, lc_name, x, y, z, zone_sn, site_sn, sensor_sttus_optn_code, sensor_sttus_code, enab, deleted)
+		VALUES (#{sensor_sn}, #{sensor_ty_optn_code}, #{sensor_ty_code}, #{sensor_name}, #{lc_name}, #{x}, #{y}, #{z}, #{zone_sn}, #{site_sn}, #{sensor_sttus_optn_code}, #{sensor_sttus_code}, #{enab}, #{deleted})
+	</insert>
+
+	<insert id="insertSensors" parameterType="java.util.List">
+		INSERT INTO fa_sensor (sensor_sn, sensor_ty_optn_code, sensor_ty_code, sensor_name, lc_name, x, y, z, zone_sn, site_sn, sensor_sttus_optn_code, sensor_sttus_code, enab, deleted)
+		VALUES
+		<foreach collection="list" item="sensor" separator=",">
+			(
+				(#{sensor.sensor_sn}, #{sensor.sensor_ty_optn_code}, #{sensor.sensor_ty_code}, #{sensor.sensor_name}, #{sensor.lc_name}, #{sensor.x}, #{sensor.y}, #{sensor.z}, #{sensor.zone_sn}, #{sensor.site_sn}, #{sensor.sensor_sttus_optn_code}, #{sensor.sensor_sttus_code}, #{sensor.enab}, #{sensor.deleted})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateSensor" parameterType="egovframework.base.model.sensor.Sensor">
+		UPDATE fa_sensor
+		SET sensor_name = #{sensor_name}, lc_name = #{lc_name}, x = #{x}, y = #{y}, z = #{z}, zone_sn = #{zone_sn}, site_sn = #{site_sn}, sensor_sttus_optn_code = #{sensor_sttus_optn_code}, sensor_sttus_code = #{sensor_sttus_code}, enab = #{enab}, deleted = #{deleted}
+		<where>
+			sensor_sn = #{sensor_sn}, sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}
+		</where>
+	</update>
+
+	<update id="updateSensorByCondition" parameterType="map">
+		UPDATE fa_sensor
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteSensor" parameterType="egovframework.base.model.sensor.Sensor">
+		DELETE FROM fa_sensor
+		<where>
+			sensor_sn = #{sensor_sn}, sensor_ty_optn_code = #{sensor_ty_optn_code}, sensor_ty_code = #{sensor_ty_code}
+		</where>
+	</delete>
+
+	<delete id="deleteSensorByCondition" parameterType="map">
+		DELETE FROM fa_sensor
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

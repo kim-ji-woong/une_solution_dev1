@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="modelDataMapper">
+
+	<select id="selectModelDatas" parameterType="map" resultType="egovframework.base.model.gltf.ModelData">
+		Select * from sdms_gltf_model_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+		<if test="orderBy != null and orderBy != ''">
+		ORDER BY ${orderBy}
+		</if>
+	</select>
+
+	<insert id="insertModelData" parameterType="egovframework.base.model.gltf.ModelData">
+		INSERT INTO sdms_gltf_model_data (gltf_model_data_sn, gltf_model_sn, model_file, camera_lc_x, camera_lc_y, camera_lc_z, camera_rtate_x, camera_rtate_y, camera_rtate_z, fov, near, far, orbit_x, orbit_y, orbit_z, buld_group_sn, buld_sn, zone_sn, floor_indx)
+		VALUES (#{gltf_model_data_sn}, #{gltf_model_sn}, #{model_file}, #{camera_lc_x}, #{camera_lc_y}, #{camera_lc_z}, #{camera_rtate_x}, #{camera_rtate_y}, #{camera_rtate_z}, #{fov}, #{near}, #{far}, #{orbit_x}, #{orbit_y}, #{orbit_z}, #{buld_group_sn}, #{buld_sn}, #{zone_sn}, #{floor_indx})
+	</insert>
+
+	<insert id="insertModelDatas" parameterType="java.util.List">
+		INSERT INTO sdms_gltf_model_data (gltf_model_data_sn, gltf_model_sn, model_file, camera_lc_x, camera_lc_y, camera_lc_z, camera_rtate_x, camera_rtate_y, camera_rtate_z, fov, near, far, orbit_x, orbit_y, orbit_z, buld_group_sn, buld_sn, zone_sn, floor_indx)
+		VALUES
+		<foreach collection="list" item="modelData" separator=",">
+			(
+				(#{modelData.gltf_model_data_sn}, #{modelData.gltf_model_sn}, #{modelData.model_file}, #{modelData.camera_lc_x}, #{modelData.camera_lc_y}, #{modelData.camera_lc_z}, #{modelData.camera_rtate_x}, #{modelData.camera_rtate_y}, #{modelData.camera_rtate_z}, #{modelData.fov}, #{modelData.near}, #{modelData.far}, #{modelData.orbit_x}, #{modelData.orbit_y}, #{modelData.orbit_z}, #{modelData.buld_group_sn}, #{modelData.buld_sn}, #{modelData.zone_sn}, #{modelData.floor_indx})
+			)
+		</foreach>
+	</insert>
+
+	<update id="updateModelData" parameterType="egovframework.base.model.gltf.ModelData">
+		UPDATE sdms_gltf_model_data
+		SET gltf_model_sn = #{gltf_model_sn}, model_file = #{model_file}, camera_lc_x = #{camera_lc_x}, camera_lc_y = #{camera_lc_y}, camera_lc_z = #{camera_lc_z}, camera_rtate_x = #{camera_rtate_x}, camera_rtate_y = #{camera_rtate_y}, camera_rtate_z = #{camera_rtate_z}, fov = #{fov}, near = #{near}, far = #{far}, orbit_x = #{orbit_x}, orbit_y = #{orbit_y}, orbit_z = #{orbit_z}, buld_group_sn = #{buld_group_sn}, buld_sn = #{buld_sn}, zone_sn = #{zone_sn}, floor_indx = #{floor_indx}
+		<where>
+			gltf_model_data_sn = #{gltf_model_data_sn}
+		</where>
+	</update>
+
+	<update id="updateModelDataByCondition" parameterType="map">
+		UPDATE sdms_gltf_model_data
+		SET ${setStatement}
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</update>
+
+	<delete id="deleteModelData" parameterType="egovframework.base.model.gltf.ModelData">
+		DELETE FROM sdms_gltf_model_data
+		<where>
+			gltf_model_data_sn = #{gltf_model_data_sn}
+		</where>
+	</delete>
+
+	<delete id="deleteModelDataByCondition" parameterType="map">
+		DELETE FROM sdms_gltf_model_data
+		<if test="customCondition != null and customCondition != ''">
+			WHERE ${customCondition}
+		</if>
+	</delete>
+
+</mapper>

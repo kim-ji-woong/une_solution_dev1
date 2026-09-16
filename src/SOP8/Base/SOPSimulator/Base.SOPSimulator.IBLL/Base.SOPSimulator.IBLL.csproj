@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Utility\Response\Response.csproj" />
+    <ProjectReference Include="..\..\Base.Model\Base.Model.csproj" />
+    <ProjectReference Include="..\..\SDMS\Base.SDMS.IBLL\Base.SDMS.IBLL.csproj" />
+    <ProjectReference Include="..\..\SOPManager\Base.SOPManager.IBLL\Base.SOPManager.IBLL.csproj" />
+  </ItemGroup>
+
+</Project>
