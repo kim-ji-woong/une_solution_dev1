@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UnEcctv": {
+      "commandName": "Project",
+      "commandLineArgs": "https://localhost:44376/ une.popup.cctv://be70d3fb-91dc-47a8-ae8d-6dca7a97ce61/1/null/CCTV%20%EC%98%81%EC%83%81%EC%A0%95%EB%B3%B4/2456/3808,927/1"
+    }
+  }
+}

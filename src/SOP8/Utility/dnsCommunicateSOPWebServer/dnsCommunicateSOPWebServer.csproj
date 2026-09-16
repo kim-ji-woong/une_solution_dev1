@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Base\SOPWebServer\SOPWebServer.BLL\Models\Request\Header.cs" Link="Models\Request\Header.cs" />
+    <Compile Include="..\..\Base\SOPWebServer\SOPWebServer.BLL\Models\Request\SensorData.cs" Link="Models\Request\SensorData.cs" />
+    <Compile Include="..\..\Base\SOPWebServer\SOPWebServer.BLL\Models\Response\ResponseSensorSignal.cs" Link="Models\Response\ResponseSensorSignal.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Response\" />
+    <Folder Include="Models\Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Response\Response.csproj" />
+  </ItemGroup>
+
+</Project>

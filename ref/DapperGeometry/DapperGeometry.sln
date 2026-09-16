@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperGeometry", "DapperGeometry\DapperGeometry.csproj", "{E781D9D7-3977-439C-AB21-30AE4A066CDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnsDapperDBUtil", "..\..\esdk\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj", "{CEC5D1F0-F6FE-456D-926B-373BFF8BE0AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E781D9D7-3977-439C-AB21-30AE4A066CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E781D9D7-3977-439C-AB21-30AE4A066CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E781D9D7-3977-439C-AB21-30AE4A066CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E781D9D7-3977-439C-AB21-30AE4A066CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC5D1F0-F6FE-456D-926B-373BFF8BE0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC5D1F0-F6FE-456D-926B-373BFF8BE0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC5D1F0-F6FE-456D-926B-373BFF8BE0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC5D1F0-F6FE-456D-926B-373BFF8BE0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {980C1D6B-6539-45F0-8FD4-D3CB182D6DB0}
+	EndGlobalSection
+EndGlobal

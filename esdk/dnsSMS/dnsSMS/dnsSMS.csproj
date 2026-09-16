@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Configurations>Debug;Release;Release_UNE_MCS;Release_SKT_MCS;Release_Kakao;Release_Soulbrain_MCS;Release_Kakaowork</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Kakao|AnyCPU'">
+    <DefineConstants>TRACE;Kakao</DefineConstants>
+    <Optimize>false</Optimize>
+    <OutputPath>D:\UnESolution\bin\common12\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Kakaowork|AnyCPU'">
+    <DefineConstants>TRACE;Kakaowork</DefineConstants>
+    <Optimize>false</Optimize>
+    <OutputPath>D:\UnESolution\bin\common12\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_UNE_MCS|AnyCPU'">
+    <DefineConstants>TRACE;UNE_MCS</DefineConstants>
+    <OutputPath>D:\UnESolution2022\bin\common12\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_SKT_MCS|AnyCPU'">
+    <DefineConstants>TRACE;SKT_MCS</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Soulbrain_MCS|AnyCPU'">
+    <DefineConstants>TRACE;Soulbrain_MCS</DefineConstants>
+    <OutputPath>D:\UnESolution\bin\common12\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;UNE_MCS</DefineConstants>
+    <OutputPath>..\..\..\..\..\bin\common12</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\dnsDapperDBUtil\dnsDapperDBUtil\dnsDapperDBUtil.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SOP>
+	<Header>
+		<XMLVersion>V2.0</XMLVersion>
+		<Category>자연재해</Category>
+		<SubCategory>태풍</SubCategory>
+		<Disaster>매미</Disaster>
+		<!-- 1이면 주간모드, 0이면 야간모드 -->
+		<Normal>1</Normal>
+		<SOPVersion description="생략가능">V1.0</SOPVersion>
+	</Header>
+	<Body>
+		<ActionStepList>
+			<ActionStep no="1">
+				<StepName>예방</StepName>
+				<UserDefinedConfigNo>1</UserDefinedConfigNo>
+				<StepMemberList>
+					<StepMember no="1">
+						<Grid>
+							<Columns>
+								<Column index="0" width="100"/>
+								<Column index="1" width="100"/>
+							</Columns>
+							<Rows>
+								<Row index="0" height="100"/>
+								<Row index="1" height="100"/>
+							</Rows>
+						</Grid>
+						<ComponentList>
+							<Component no="1">
+								<ColumnIndex>0</ColumnIndex>
+								<RowIndex>0</RowIndex>
+								<Text>string</Text>
+								<!-- ComponentType { PROCESS = 0, DECISION = 1, ANNOTATION = 2 , ENDPOINT = 3, TRANSMISSION = 6 } -->
+								<!-- Process일 경우-->
+								<Property type="0">
+									<!-- Type : 정규조직(0), 평일비상조직(1), , 야간 및 휴일 비상조직(2) -->
+									<!-- name : 팀 전체 경로 -->
+									<TeamList>
+										<Team type="0" name="개발본부/개발팀"></Team>
+										<Team type="1" name="비상대책반/현장대응반/응급구조반"></Team>
+										<Team type="0" name="개발본부/개발팀"></Team>
+									</TeamList>
+									<OnlyTeamLeader>false</OnlyTeamLeader>
+									<AutoRun>false</AutoRun>
+									<MissionList>
+										<Mission>Mission Text</Mission>
+										<MissionExternal>
+											<Program no="1">
+												<Exe>test.exe</Exe>
+												<InstallPath>생략가능</InstallPath>
+												<Description>밸브 잠금</Description>
+											</Program>
+											<Parameters>
+												<Param>aaa</Param>
+											</Parameters>
+										</MissionExternal>
+									</MissionList>
+								</Property>
+								<!-- Annotation일 경우 -->
+								<Property type="2"></Property>
+								<!-- Decision일 경우-->
+								<Property type="1">
+									<AutoRunScript>string</AutoRunScript>
+									<AutoRunScriptVariableTypes>string(생략가능)</AutoRunScriptVariableTypes>
+								</Property>
+								<!-- EndPoint일 경우-->
+								<Property type="3">
+									<IsBegin>true</IsBegin>
+								</Property>
+								<!-- Transmission일 경우-->
+								<Property type="4">
+									<UseSMS>true</UseSMS>
+									<UseBroadcast>false</UseBroadcast>
+									<UseEmail>false</UseEmail>
+									<Message>string(생략가능)</Message>
+									<!-- Type : 정규조직(0), 평일비상조직(1), , 야간 및 휴일 비상조직(2) -->
+									<!-- name : 팀 전체 경로 -->
+									<TeamList>
+										<Team type="0" name="개발본부/개발팀"></Team>
+										<Team type="1" name="비상대책반/현장대응반/응급구조반"></Team>
+										<Team type="0" name="개발본부/개발팀"></Team>
+									</TeamList>
+									<OnlyTeamLeader>false</OnlyTeamLeader>
+									<AutoRun>false</AutoRun>
+									<UseSiren>false</UseSiren>
+								</Property>
+							</Component>
+						</ComponentList>
+						<ArrowList>
+							<Arrow>
+								<Text>string(생략가능)</Text>
+								<BeginComponentNo>0</BeginComponentNo>
+								<!--0 : Top, 1 : Right, 2 : Bottom, 3 : Left, 4 : 알수 없음-->
+								<BeginComponentPosition>4</BeginComponentPosition>
+								<EndComponentNo>0</EndComponentNo>
+								<!--0 : Top, 1 : Right, 2 : Bottom, 3 : Left, 4 : 알수 없음-->
+								<EndComponentPosition>4</EndComponentPosition>
+							</Arrow>
+						</ArrowList>
+					</StepMember>
+				</StepMemberList>
+			</ActionStep>
+		</ActionStepList>
+	</Body>
+	<Variables>
+		<UserDefinedConfig no="1" name="필수" description="생략가능">
+			<UserVariable name="string" type="string" description="변수설명" />
+		</UserDefinedConfig>
+	</Variables>
+</SOP>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36422.26
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnsEmail", "dnsEmail\dnsEmail.csproj", "{85E4AF07-C8AD-4DB5-A928-B7FBD262926A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85E4AF07-C8AD-4DB5-A928-B7FBD262926A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E4AF07-C8AD-4DB5-A928-B7FBD262926A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E4AF07-C8AD-4DB5-A928-B7FBD262926A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E4AF07-C8AD-4DB5-A928-B7FBD262926A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF4D1418-17DB-443D-B942-9DF968B0E680}
+	EndGlobalSection
+EndGlobal

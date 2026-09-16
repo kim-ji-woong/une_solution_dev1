@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- Version 2.0 -->
+	<!-- 2024-04-24 신규작성 : 김지웅 -->
+	<!-- Version 1.0을 기반으로 새로 작성 -->
+	<xs:element name="SOP">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="1">
+				<xs:element name="Header">
+					<xs:complexType>
+						<xs:sequence minOccurs="1" maxOccurs="1">
+							<xs:element name="XMLVersion" type="xs:string" />
+							<xs:element name="Category" type="xs:string" />
+							<xs:element name="SubCategory" type="xs:string" />
+							<xs:element name="Disaster" type="xs:string" />
+							<xs:element name="Normal" type="xs:boolean" />
+							<xs:element name="SOPVersion">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="description" type="xs:string" use="optional" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Body">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ActionStepList" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ActionStep" minOccurs="1" maxOccurs="4">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="StepName" type="xs:string" minOccurs="1" maxOccurs="1" />
+													<xs:element name="UserDefinedConfigNo" type="xs:integer" minOccurs="0" maxOccurs="1" />
+													<xs:element name="StepMemberList" minOccurs="1" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="StepMember" minOccurs="1" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Grid" minOccurs="1" maxOccurs="1">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Columns" minOccurs="1" maxOccurs="1">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element minOccurs="1" maxOccurs="unbounded" name="Column">
+																										<xs:complexType>
+																											<xs:attribute name="index" type="xs:integer" use="required" />
+																											<xs:attribute name="width" type="xs:integer" use="required" />
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																						<xs:element name="Rows" minOccurs="1" maxOccurs="1">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element minOccurs="1" maxOccurs="unbounded" name="Row">
+																										<xs:complexType>
+																											<xs:attribute name="index" type="xs:integer" use="required" />
+																											<xs:attribute name="height" type="xs:integer" use="required" />
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="ComponentList" minOccurs="1" maxOccurs="1">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Component" minOccurs="0" maxOccurs="unbounded">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="ColumnIndex" type="xs:integer" minOccurs="1" maxOccurs="1" />
+																									<xs:element name="RowIndex" type="xs:integer" minOccurs="1" maxOccurs="1" />
+																									<xs:element name="Text" type="xs:string" minOccurs="1" maxOccurs="1" />
+																									<xs:element minOccurs="1" maxOccurs="1" name="Property">
+																										<xs:complexType>
+																											<xs:sequence>
+																												<xs:element minOccurs="0" maxOccurs="1" name="UseSMS" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="UseBroadcast" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="UseEmail" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="Message" type="xs:string" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="IsBegin" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="AutoRunScript" type="xs:string" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="AutoRunScriptVariableTypes" type="xs:string" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="TeamList">
+																													<xs:complexType>
+																														<xs:sequence>
+																															<xs:element minOccurs="0" maxOccurs="unbounded" name="Team">
+																																<xs:complexType>
+																																	<xs:attribute name="type" type="xs:integer" use="required" />
+																																	<xs:attribute name="name" type="xs:string" use="required" />
+																																</xs:complexType>
+																															</xs:element>
+																														</xs:sequence>
+																													</xs:complexType>
+																												</xs:element>
+																												<xs:element minOccurs="0" maxOccurs="1" name="OnlyTeamLeader" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="AutoRun" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="UseSiren" type="xs:boolean" />
+																												<xs:element minOccurs="0" maxOccurs="1" name="MissionList">
+																													<xs:complexType>
+																														<xs:sequence minOccurs="0" maxOccurs="unbounded">
+																															<xs:choice>
+																																<xs:element name="Mission" type="xs:string" />
+																																<xs:element ref="MissionExternal"/>
+																															</xs:choice>
+																														</xs:sequence>
+																													</xs:complexType>
+																												</xs:element>
+																											</xs:sequence>
+																											<xs:attribute name="type" type="xs:integer" use="required" />
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																								<xs:attribute name="no" type="xs:integer" use="required" />
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="ArrowList" minOccurs="1" maxOccurs="1">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Arrow">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="Text" type="xs:string"  minOccurs="0" maxOccurs="1" />
+																									<xs:element name="BeginComponentNo" type="xs:integer" minOccurs="1" maxOccurs="1" />
+																									<xs:element name="BeginComponentPosition" type="xs:integer" minOccurs="1" maxOccurs="1" />
+																									<xs:element name="EndComponentNo" type="xs:integer" minOccurs="1" maxOccurs="1" />
+																									<xs:element name="EndComponentPosition" type="xs:integer" minOccurs="1" maxOccurs="1" />
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																		<xs:attribute name="no" type="xs:integer" use="required" />
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="no" type="xs:integer" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Variables" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UserDefinedConfig">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="UserVariable">
+											<xs:complexType>
+												<xs:attribute name="name" type="xs:string" use="required" />
+												<xs:attribute name="type" type="xs:string" use="required" />
+												<xs:attribute name="description" type="xs:string" use="optional" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="no" type="xs:integer" use="required" />
+									<xs:attribute name="name" type="xs:string" use="required" />
+									<xs:attribute name="description" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MissionExternal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Program">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Exe" type="xs:string" />
+							<xs:element name="InstallPath" type="xs:string" minOccurs="0" maxOccurs="1" />
+							<xs:element name="Description" type="xs:string" />
+						</xs:sequence>
+						<xs:attribute name="no" type="xs:integer" use="required" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Parameters">
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="Param" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

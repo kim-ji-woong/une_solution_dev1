@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveToVO", "MoveToVO\MoveToVO.csproj", "{1C0A2FD9-5136-4A21-8318-173077084A2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C0A2FD9-5136-4A21-8318-173077084A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0A2FD9-5136-4A21-8318-173077084A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0A2FD9-5136-4A21-8318-173077084A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0A2FD9-5136-4A21-8318-173077084A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F4C63E6-D9E2-492D-B281-7BAE6955F38F}
+	EndGlobalSection
+EndGlobal
